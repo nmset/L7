@@ -8,7 +8,7 @@
  */
 
 #ifndef LRESULTSET_H
-#define	LRESULTSET_H
+#define LRESULTSET_H
 
 #include "LInformation.h"
 #include "LBoundControl.h"
@@ -271,5 +271,5 @@ private:
 };
 
 
-#endif	/* LRESULTSET_H */
+#endif /* LRESULTSET_H */
 

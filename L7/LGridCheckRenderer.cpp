@@ -42,14 +42,14 @@ void LGridCheckRenderer::Draw(wxGrid & grid,
     if (m_triState)
     {
         if (val.IsEmpty()
-            || val == m_nullLabel)
+                || val == m_nullLabel)
         {
             grid.GetTable()->SetValue(row, col, m_nullLabel);
             wxGridCellStringRenderer::Draw(grid, attr, dc, rect, row, col, isSelected);
             return;
         }
         if (val == _T("0")
-            || val.Lower() == _("no"))
+                || val.Lower() == _("no"))
         {
             grid.GetTable()->SetValue(row, col, _T("No"));
         }
@@ -61,8 +61,8 @@ void LGridCheckRenderer::Draw(wxGrid & grid,
     else
     {
         if (val == _T("0")
-            || val.IsEmpty()
-            || val.Lower() == _("no"))
+                || val.IsEmpty()
+                || val.Lower() == _("no"))
         {
             grid.GetTable()->SetValue(row, col, _T("No"));
         }

@@ -25,7 +25,8 @@ LLightSQResultSet::~LLightSQResultSet()
     {
         SQresult * srs = static_cast<SQresult*> (m_rs);
         sqlite3_free_table(srs->m_data);
-        delete srs; m_rs = NULL;
+        delete srs;
+        m_rs = NULL;
     }
 }
 
@@ -44,12 +45,14 @@ bool LLightSQResultSet::RunSQL()
     {
         SQresult * srs = static_cast<SQresult*> (m_rs);
         sqlite3_free_table(srs->m_data);
-        wxDELETE(srs);;
+        wxDELETE(srs);
+        ;
         m_rs = NULL;
     }
     m_rs = m_conn->ExecuteSQL(m_curSql);
     SQresult * srs = static_cast<SQresult*> (m_rs);
-    if (!RetrieveColNames(srs)) { // No columns returned if no data !
+    if (!RetrieveColNames(srs))
+    { // No columns returned if no data !
         m_rs = NULL;
         return false;
     }
@@ -199,12 +202,14 @@ bool LLightSQResultSet::RetrieveColNames(SQresult * emptyResult)
             emptyResult->m_nbCols = m_colNames.GetCount();
             sqlite3_finalize(ppStmt);
             return true;
-        } else {
+        }
+        else
+        {
             int errCode = sqlite3_errcode(db);
             const char * errMsg = sqlite3_errmsg(db);
             const char * errStr = sqlite3_errstr(errCode);
             const wxString msg(wxAny(errCode).As<wxString>() + _T(" ") +
-                             wxString(errMsg) + _T("\n") + wxString(errStr));
+                               wxString(errMsg) + _T("\n") + wxString(errStr));
             wxPrintf("%s\n", msg);
             wxFAIL_MSG(msg);
         }

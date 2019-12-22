@@ -8,7 +8,7 @@
  */
 
 #ifndef LGRIDSPINEDITOR_H
-#define	LGRIDSPINEDITOR_H
+#define LGRIDSPINEDITOR_H
 
 #include "LGridColEditor.h"
 #include "LBoundSpinCtrl.h"
@@ -93,5 +93,5 @@ private:
     int m_min, m_max, m_initial;
 };
 
-#endif	/* LGRIDSPINEDITOR_H */
+#endif /* LGRIDSPINEDITOR_H */
 

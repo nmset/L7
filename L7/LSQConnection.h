@@ -9,7 +9,7 @@
 
 #ifdef USE_LIBSQ
 #ifndef LSQCONNECTION_H
-#define	LSQCONNECTION_H
+#define LSQCONNECTION_H
 
 #include <sqlite3.h>
 #include <vector>
@@ -73,7 +73,7 @@ public:
      * @param newSql a valid SQL statement.
      * @return an untyped pointer to an SQresult referencing the data, or NULL if error.
      */
-    void * ExecuteSQL (const wxString& newSql);
+    void * ExecuteSQL(const wxString& newSql);
     /**
      * Intended for database actions that do not fetch table rows. Calls sqlite3_exec.
      * @param newSql : : a valid SQL statement.
@@ -104,5 +104,5 @@ private:
 };
 
 }
-#endif	/* LSQCONNECTION_H */
+#endif /* LSQCONNECTION_H */
 #endif

@@ -8,7 +8,7 @@
  */
 
 #ifndef LCONNECTION_H
-#define	LCONNECTION_H
+#define LCONNECTION_H
 
 #include <wx/wx.h>
 #include "LInformation.h"
@@ -116,6 +116,7 @@ public:
      */
     virtual void * GetReturnedKeys() const
     {
+        return NULL;
     };
 
     /**
@@ -134,6 +135,7 @@ public:
      * @param evh : an LConnectionEvent derived class.
      */
     void UnRegisterEventHandler(LConnectionEvent * evh);
+
     /**
      * Returns registered derived classes of LConnectionEvent. 
      * @return A reference to a wxArrayPtrVoid object.
@@ -185,5 +187,5 @@ private:
 
 };
 
-#endif	/* LCONNECTION_H */
+#endif /* LCONNECTION_H */
 

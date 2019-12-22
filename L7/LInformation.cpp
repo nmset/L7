@@ -9,7 +9,7 @@
 
 #include "LInformation.h"
 
-LInformation::LInformation(const wxString& newCode, 
+LInformation::LInformation(const wxString& newCode,
                            const wxString& newMsg)
 {
     m_code = newCode;

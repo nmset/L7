@@ -1,6 +1,11 @@
+2019-12-23
+Added pickers to manage simple tabular data in a grid shown in a popup.
+The grid's content is stored as JSON or XML data.
+
 2018-04-25
 1. Controls in 'Form View' inherit the grid cell's editor validator.
-2. Corrected a bug in LGridSpinEditor::ProvideFormEditor, where the form editor was created without the style parameter.
+2. Corrected a bug in LGridSpinEditor::ProvideFormEditor, where the form editor 
+was created without the style parameter.
 3. Rename the project to L7.
 4. Change versioning pattern to running integers.
 5. Moved to github.com.

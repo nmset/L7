@@ -8,7 +8,7 @@
  */
 
 #ifndef LBOUNDTEXTCTRL_H
-#define	LBOUNDTEXTCTRL_H
+#define LBOUNDTEXTCTRL_H
 
 #include <wx/textctrl.h>
 #include "LBoundControl.h"
@@ -32,9 +32,9 @@ public:
     /**
      * Calls ChangeValue().
      * @param newData
-     * @return 
      */
-    bool SetData(const wxAny& newData);
+    void SetData(const wxAny& newData);
+
     /**
      * Alias for IsEmpty().
      * @return 
@@ -43,15 +43,17 @@ public:
     {
         return IsEmpty();
     }
+
     /**
      * Alias for Clear().
      * @return 
      */
-    bool SetNull()
+    void SetNull()
     {
         Clear();
     }
     bool IsDirty();
+
     /**
      * Alias for GetValue().
      * @return 
@@ -64,5 +66,5 @@ public:
 private:
 };
 
-#endif	/* LBOUNDTEXTCTRL_H */
+#endif /* LBOUNDTEXTCTRL_H */
 

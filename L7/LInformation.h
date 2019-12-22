@@ -8,7 +8,7 @@
  */
 
 #ifndef LINFORMATION_H
-#define	LINFORMATION_H
+#define LINFORMATION_H
 
 #include <wx/wx.h>
 
@@ -33,6 +33,7 @@ public:
     {
         return m_msg;
     }
+
     /**
      * 
      * @return Both the code and the message concatenated.
@@ -46,5 +47,5 @@ private:
     wxString m_msg;
 };
 
-#endif	/* LINFORMATION_H */
+#endif /* LINFORMATION_H */
 

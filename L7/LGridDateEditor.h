@@ -8,14 +8,16 @@
  */
 
 #ifndef LGRIDDATEEDITOR_H
-#define	LGRIDDATEEDITOR_H
+#define LGRIDDATEEDITOR_H
 
 #include "LGridColEditor.h"
 #include "LBoundDatePickerCtrl.h"
+
 /**
  * Edits table data using an LBoundDatePickerCtrl.
  */
-class LGridDateEditor : public wxGridCellEditor, public LGridColEditor {
+class LGridDateEditor : public wxGridCellEditor, public LGridColEditor
+{
 public:
     /**
      * 
@@ -32,16 +34,16 @@ public:
      * @param id
      * @param evtHandler
      */
-    void Create (wxWindow *parent, wxWindowID id, wxEvtHandler *evtHandler);
+    void Create(wxWindow *parent, wxWindowID id, wxEvtHandler *evtHandler);
     /**
      * Creates m_control if necessary. Registers the editor in the grid's resultset.
      * @param row
      * @param col
      * @param grid
      */
-    void BeginEdit (int row, int col, wxGrid *grid);
-    wxGridCellEditor* Clone () const;
-    bool EndEdit (int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
+    void BeginEdit(int row, int col, wxGrid *grid);
+    wxGridCellEditor* Clone() const;
+    bool EndEdit(int row, int col, const wxGrid *grid, const wxString &oldval, wxString *newval);
     /**
      * Applies the editor value as returned by GetData() to the grid cell.
      * If the editor contains wxInvalidDateTime, the grid cell is set to an empty string.
@@ -49,11 +51,11 @@ public:
      * @param col
      * @param grid
      */
-    void ApplyEdit (int row, int col, wxGrid *grid);
+    void ApplyEdit(int row, int col, wxGrid *grid);
     /**
      * Deletes the editor, all pointers to the editor are set to NULL.
      */
-    void Reset ();
+    void Reset();
     /**
      * 
      * @return GetData(), or wxEmptyString if the editor control has not been created.
@@ -63,7 +65,11 @@ public:
      * Creates a wxDatePickerCtrl to be used as editor in form view.
      */
     wxControl* ProvideFormEditor(wxWindow * parent);
-    wxControl* GetFormEditor() const {return m_formEditor;}
+
+    wxControl* GetFormEditor() const
+    {
+        return m_formEditor;
+    }
     /**
      * Updates the grid cell and the editor. m_formEditor is deleted and set to NULL.
      * @param row
@@ -71,7 +77,7 @@ public:
      * @param grid
      */
     void SyncBack(const int row, const int col, wxGrid * grid);
-    
+
 private:
     wxDatePickerCtrl * m_formEditor;
     /**
@@ -80,5 +86,5 @@ private:
     LBoundDatePickerCtrl * m_BoundDatePicker;
 };
 
-#endif	/* LGRIDDATEEDITOR_H */
+#endif /* LGRIDDATEEDITOR_H */
 

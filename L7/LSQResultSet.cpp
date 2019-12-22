@@ -208,9 +208,9 @@ const wxAny LSQResultSet::GetData(const wxString &columnName) const
 {
     SQresult * srs = static_cast<SQresult*> (m_rs);
     if (m_cursor < 0
-        || IsInserting()
-        || !HasData()
-        || m_cursor > srs->m_nbRows - 1)
+            || IsInserting()
+            || !HasData()
+            || m_cursor > srs->m_nbRows - 1)
         return wxEmptyString;
     for (unsigned int c = 0; c < srs->m_nbCols; c++)
     {

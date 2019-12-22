@@ -8,7 +8,7 @@
  */
 
 #ifndef LBOUNDSPINCTRL_H
-#define	LBOUNDSPINCTRL_H
+#define LBOUNDSPINCTRL_H
 
 #include <wx/spinctrl.h>
 #include "LBoundControl.h"
@@ -48,9 +48,8 @@ public:
     /**
      * If newData is null or empty, sets the control to its initial value.
      * @param newData
-     * @return 
      */
-    bool SetData(const wxAny& newData);
+    void SetData(const wxAny& newData);
 
     /**
      * This control is never empty.
@@ -65,7 +64,7 @@ public:
      * Sets the control to its initial value.
      * @return 
      */
-    bool SetNull()
+    void SetNull()
     {
         SetData(m_initialValue);
     }
@@ -84,5 +83,5 @@ private:
     int m_initialValue;
 };
 
-#endif	/* LBOUNDSPINCTRL_H */
+#endif /* LBOUNDSPINCTRL_H */
 

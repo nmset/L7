@@ -8,7 +8,7 @@
  */
 
 #ifndef LGRIDCOMBOEDITOR_H
-#define	LGRIDCOMBOEDITOR_H
+#define LGRIDCOMBOEDITOR_H
 
 #include "LGridColEditor.h"
 #include "LBoundComboBox.h"
@@ -85,5 +85,5 @@ private:
     LBoundComboBox * m_BoundComboBox;
 };
 
-#endif	/* LGRIDCOMBOEDITOR_H */
+#endif /* LGRIDCOMBOEDITOR_H */
 

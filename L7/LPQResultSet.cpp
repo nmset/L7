@@ -15,7 +15,6 @@ using namespace PQ;
 
 LPQResultSet::LPQResultSet() : LResultSet()
 {
-
 }
 
 LPQResultSet::LPQResultSet(LConnection* newConnection) : LResultSet(newConnection)
@@ -197,9 +196,9 @@ const wxAny LPQResultSet::GetData(const wxString& columnName) const
 {
     PGresult * prs = static_cast<PGresult*> (m_rs);
     if (m_cursor < 0
-        || IsInserting()
-        || !HasData()
-        || m_cursor > PQntuples(prs) - 1)
+            || IsInserting()
+            || !HasData()
+            || m_cursor > PQntuples(prs) - 1)
         return wxEmptyString;
     const char* colName = columnName.c_str();
     int colIdx = PQfnumber(prs, colName);

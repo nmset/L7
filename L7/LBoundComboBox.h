@@ -8,11 +8,12 @@
  */
 
 #ifndef LBOUNDCOMBOBOX_H
-#define	LBOUNDCOMBOBOX_H
+#define LBOUNDCOMBOBOX_H
 
 #include <wx/combobox.h>
 #include "LBoundControl.h"
 #include "LResultSet.h"
+
 /**
  * The control is called 'translated' if its items have associated client data that are instances of LItemData. 
  * The item strings are then only descriptive.
@@ -93,9 +94,8 @@ public:
      * If newData is empty or literal NULL, calls SetNull().
      * Else, selects the first item whose associated client data equals newData.
      * @param newData
-     * @return false if no item can be matched with newData, true otherwise.
      */
-    bool SetData(const wxAny& newData);
+    void SetData(const wxAny& newData);
     /**
      * Sets the resultset member and registers the control in the resultset.
      * @param newResultSet
@@ -114,7 +114,7 @@ public:
      * Else, selects the first item that does not have an associated client data.
      * @return 
      */
-    bool SetNull();
+    void SetNull();
     bool IsDirty();
     /**
      * Alias for GetValue().
@@ -125,5 +125,5 @@ private:
 
 };
 
-#endif	/* LBOUNDCOMBOBOX_H */
+#endif /* LBOUNDCOMBOBOX_H */
 

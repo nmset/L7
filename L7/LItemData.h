@@ -8,7 +8,7 @@
  */
 
 #ifndef LITEMDATA_H
-#define	LITEMDATA_H
+#define LITEMDATA_H
 
 #include <wx/wx.h>
 
@@ -39,5 +39,5 @@ private:
     wxAny m_data;
 };
 
-#endif	/* LITEMDATA_H */
+#endif /* LITEMDATA_H */
 

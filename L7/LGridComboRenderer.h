@@ -8,7 +8,7 @@
  */
 
 #ifndef LGRIDCOMBORENDERER_H
-#define	LGRIDCOMBORENDERER_H
+#define LGRIDCOMBORENDERER_H
 
 #include "wx/grid.h"
 
@@ -21,5 +21,5 @@ private:
 
 };
 
-#endif	/* LGRIDCOMBORENDERER_H */
+#endif /* LGRIDCOMBORENDERER_H */
 

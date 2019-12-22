@@ -8,7 +8,7 @@
  */
 
 #ifndef LGRIDCHECKEDITOR_H
-#define	LGRIDCHECKEDITOR_H
+#define LGRIDCHECKEDITOR_H
 
 #include "LBoundCheckBox.h"
 #include "LGridColEditor.h"
@@ -93,5 +93,5 @@ private:
     LBoundCheckBox * m_BoundCheckBox;
 };
 
-#endif	/* LGRIDCHECKEDITOR_H */
+#endif /* LGRIDCHECKEDITOR_H */
 

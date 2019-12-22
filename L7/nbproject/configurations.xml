@@ -4,6 +4,20 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="special" projectFiles="true">
+        <itemPath>special/BaseGridPicker.h</itemPath>
+        <itemPath>special/BasePicker.h</itemPath>
+        <itemPath>special/JsonGridPickerCtrl.h</itemPath>
+        <itemPath>special/JsonHelper.h</itemPath>
+        <itemPath>special/LBoundJsonGridPicker.h</itemPath>
+        <itemPath>special/LBoundXmlGridPicker.h</itemPath>
+        <itemPath>special/LGridJsonCellEditor.h</itemPath>
+        <itemPath>special/LGridJsonCellRenderer.h</itemPath>
+        <itemPath>special/LGridXmlCellEditor.h</itemPath>
+        <itemPath>special/LGridXmlCellRenderer.h</itemPath>
+        <itemPath>special/XmlGridPickerCtrl.h</itemPath>
+        <itemPath>special/XmlHelper.h</itemPath>
+      </logicalFolder>
       <itemPath>LBoundCheckBox.h</itemPath>
       <itemPath>LBoundComboBox.h</itemPath>
       <itemPath>LBoundControl.h</itemPath>
@@ -44,6 +58,20 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="f1" displayName="special" projectFiles="true">
+        <itemPath>special/BaseGridPicker.cpp</itemPath>
+        <itemPath>special/BasePicker.cpp</itemPath>
+        <itemPath>special/JsonGridPickerCtrl.cpp</itemPath>
+        <itemPath>special/JsonHelper.cpp</itemPath>
+        <itemPath>special/LBoundJsonGridPicker.cpp</itemPath>
+        <itemPath>special/LBoundXmlGridPicker.cpp</itemPath>
+        <itemPath>special/LGridJsonCellEditor.cpp</itemPath>
+        <itemPath>special/LGridJsonCellRenderer.cpp</itemPath>
+        <itemPath>special/LGridXmlCellEditor.cpp</itemPath>
+        <itemPath>special/LGridXmlCellRenderer.cpp</itemPath>
+        <itemPath>special/XmlGridPickerCtrl.cpp</itemPath>
+        <itemPath>special/XmlHelper.cpp</itemPath>
+      </logicalFolder>
       <itemPath>LBoundCheckBox.cpp</itemPath>
       <itemPath>LBoundComboBox.cpp</itemPath>
       <itemPath>LBoundControl.cpp</itemPath>
@@ -101,6 +129,7 @@
           <incDir>
             <pElem>/usr/local/wxWidgets/lib/wx/include/gtk2-unicode-3.1</pElem>
             <pElem>/usr/local/wxWidgets/include/wx-3.1</pElem>
+            <pElem>/usr/local/wxWidgets/include</pElem>
           </incDir>
           <preprocessorList>
             <Elem>USE_LIBPQ</Elem>
@@ -118,6 +147,8 @@
           <linkerLibItems>
             <linkerLibLibItem>wx_baseu-3.1</linkerLibLibItem>
             <linkerLibLibItem>wx_gtk2u_core-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wx_baseu_xml-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wxcode_gtk2ud_wxjson-3.1</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -247,6 +278,54 @@
       </item>
       <item path="LVersion.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="special/BaseGridPicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/BaseGridPicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/BasePicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/BasePicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/JsonGridPickerCtrl.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/JsonGridPickerCtrl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/JsonHelper.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/JsonHelper.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LBoundJsonGridPicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LBoundJsonGridPicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LBoundXmlGridPicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LBoundXmlGridPicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LGridJsonCellEditor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LGridJsonCellEditor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LGridJsonCellRenderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LGridJsonCellRenderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LGridXmlCellEditor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LGridXmlCellEditor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LGridXmlCellRenderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LGridXmlCellRenderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/XmlGridPickerCtrl.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/XmlGridPickerCtrl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/XmlHelper.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/XmlHelper.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -264,6 +343,7 @@
           <incDir>
             <pElem>/usr/local/wxWidgets-Release/include/wx-3.1</pElem>
             <pElem>/usr/local/wxWidgets-Release/lib/wx/include/gtk2-unicode-3.1</pElem>
+            <pElem>/usr/local/wxWidgets-Release/include</pElem>
           </incDir>
           <preprocessorList>
             <Elem>USE_LIBPQ</Elem>
@@ -288,6 +368,8 @@
           <linkerLibItems>
             <linkerLibLibItem>wx_baseu-3.1</linkerLibLibItem>
             <linkerLibLibItem>wx_gtk2u_core-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wx_baseu_xml-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wxcode_gtk2u_wxjson-3.1</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -416,6 +498,54 @@
       <item path="LSQresult.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="LVersion.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/BaseGridPicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/BaseGridPicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/BasePicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/BasePicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/JsonGridPickerCtrl.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/JsonGridPickerCtrl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/JsonHelper.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/JsonHelper.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LBoundJsonGridPicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LBoundJsonGridPicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LBoundXmlGridPicker.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LBoundXmlGridPicker.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LGridJsonCellEditor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LGridJsonCellEditor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LGridJsonCellRenderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LGridJsonCellRenderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LGridXmlCellEditor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LGridXmlCellEditor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/LGridXmlCellRenderer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/LGridXmlCellRenderer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/XmlGridPickerCtrl.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/XmlGridPickerCtrl.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="special/XmlHelper.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="special/XmlHelper.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

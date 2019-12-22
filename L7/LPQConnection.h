@@ -9,7 +9,7 @@
 
 #ifdef USE_LIBPQ
 #ifndef LPQCONNECTION_H
-#define	LPQCONNECTION_H
+#define LPQCONNECTION_H
 
 #include <wx/wx.h>
 #include <libpq-fe.h>
@@ -130,5 +130,5 @@ private:
 };
 
 }
-#endif	/* LPQCONNECTION_H */
+#endif /* LPQCONNECTION_H */
 #endif

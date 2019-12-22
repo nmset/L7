@@ -8,7 +8,7 @@
  */
 
 #ifndef LGRIDTEXTRENDERER_H
-#define	LGRIDTEXTRENDERER_H
+#define LGRIDTEXTRENDERER_H
 
 #include "wx/grid.h"
 
@@ -21,5 +21,5 @@ private:
 
 };
 
-#endif	/* LGRIDTEXTRENDERER_H */
+#endif /* LGRIDTEXTRENDERER_H */
 

@@ -8,7 +8,7 @@
  */
 
 #ifndef LNAVIGATOR_H
-#define	LNAVIGATOR_H
+#define LNAVIGATOR_H
 
 #include <wx/wx.h>
 #include "LResultSet.h"
@@ -74,6 +74,7 @@ private:
 };
 
 //////////////////////////////////////////////////////////////////////////////
+
 /**
  * A private resultset event handler for LNavigator. All functions are declared private.
  * Don't use it.
@@ -91,5 +92,5 @@ private:
     void UpdateLocation(const LResultSet* caller);
 };
 
-#endif	/* LNAVIGATOR_H */
+#endif /* LNAVIGATOR_H */
 

@@ -8,7 +8,7 @@
  */
 
 #ifndef LGRIDCHECKRENDERER_H
-#define	LGRIDCHECKRENDERER_H
+#define LGRIDCHECKRENDERER_H
 
 #include "wx/grid.h"
 
@@ -52,5 +52,5 @@ private:
     bool m_triState;
 };
 
-#endif	/* LGRIDCHECKRENDERER_H */
+#endif /* LGRIDCHECKRENDERER_H */
 

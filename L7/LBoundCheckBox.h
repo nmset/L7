@@ -8,14 +8,13 @@
  */
 
 #ifndef LBOUNDCHECKBOX_H
-#define	LBOUNDCHECKBOX_H
+#define LBOUNDCHECKBOX_H
 
 #include <wx/checkbox.h>
 #include "LBoundControl.h"
 #include "LResultSet.h"
 
-class LBoundCheckBox : public wxCheckBox, public LBoundControl
-{
+class LBoundCheckBox : public wxCheckBox, public LBoundControl {
 public:
     LBoundCheckBox(wxWindow* parent, wxWindowID id = wxID_ANY, long style = 0);
     virtual ~LBoundCheckBox();
@@ -32,9 +31,8 @@ public:
      * and any other value to checked status.
      * 
      * @param newData
-     * @return 
      */
-    bool SetData(const wxAny& newData);
+    void SetData(const wxAny& newData);
     /**
      * Sets the resultset member and registers the control in the resultset.
      * @param newResultSet
@@ -49,7 +47,7 @@ public:
      * If control is tristate, it is set to undetermined state. Else,  it is set to unchecked state.
      * @return 
      */
-    bool SetNull();
+    void SetNull();
     bool IsDirty();
     /**
      * If the control is checked, returns literal Oui
@@ -64,5 +62,5 @@ private:
 
 };
 
-#endif	/* LBOUNDCHECKBOX_H */
+#endif /* LBOUNDCHECKBOX_H */
 

@@ -33,10 +33,9 @@ const wxAny LBoundTextCtrl::GetData()
     return GetValue();
 }
 
-bool LBoundTextCtrl::SetData(const wxAny& newData)
+void LBoundTextCtrl::SetData(const wxAny& newData)
 {
     ChangeValue(newData.As<wxString>());
-    return true;
 }
 
 bool LBoundTextCtrl::IsDirty()

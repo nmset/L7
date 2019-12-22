@@ -8,7 +8,7 @@
  */
 
 #ifndef LLIGHTRESULTSET_H
-#define	LLIGHTRESULTSET_H
+#define LLIGHTRESULTSET_H
 
 /* Added to be able to use derived classes independantly
  * If xConnection and xResultSet classes are included in some project,
@@ -27,7 +27,8 @@
  * 
  * Does not modify data.
  */
-class LLightResultSet : public wxTrackable {
+class LLightResultSet : public wxTrackable
+{
 public:
     LLightResultSet();
     LLightResultSet(LConnection * newConnection);
@@ -39,19 +40,23 @@ public:
      * Updates the SQL statement without running it.
      * @param newSql
      */
-    void UpdateSQL(const wxString& newSql) {
+    void UpdateSQL(const wxString& newSql)
+    {
         m_curSql = newSql;
     }
 
-    const wxString& GetSQL() const {
+    const wxString& GetSQL() const
+    {
         return m_curSql;
     }
 
-    void SetConnection(LConnection * newConnection) {
+    void SetConnection(LConnection * newConnection)
+    {
         m_conn = newConnection;
     }
 
-    const LConnection * GetConnection() const {
+    const LConnection * GetConnection() const
+    {
         return m_conn;
     }
     virtual bool HasData() const = 0;
@@ -68,7 +73,8 @@ public:
      * 
      * Returns -1 if there's no data.
      */
-    const int GetRow() const {
+    const int GetRow() const
+    {
         return m_cursor;
     }
     virtual const unsigned int GetRowCount() const = 0;
@@ -89,5 +95,5 @@ private:
 
 };
 
-#endif	/* LLIGHTRESULTSET_H */
+#endif /* LLIGHTRESULTSET_H */
 

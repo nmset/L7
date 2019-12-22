@@ -163,17 +163,17 @@ void LBoundComboBox::Clear()
     SetWindowStyleFlag(wsflags);
 }
 
-bool LBoundComboBox::SetData(const wxAny& data)
+void LBoundComboBox::SetData(const wxAny& data)
 {
     const wxString sData = data.As<wxString>();
     if (IsTranslated())
     {
         if (data.IsNull()
-            || sData.IsEmpty()
-            || sData == L_SQLNULL)
+                || sData.IsEmpty()
+                || sData == L_SQLNULL)
         {
             SetNull();
-            return (GetSelection() != wxNOT_FOUND); // ?
+            return;
         }
         for (unsigned int i = 0; i < GetCount(); i++)
         {
@@ -183,18 +183,16 @@ bool LBoundComboBox::SetData(const wxAny& data)
                 if (x->GetData().As<wxString>() == sData)
                 {
                     SetSelection(i);
-                    return true;
+                    return;
                 }
             }
         }
     }
     else
     {
-        bool hasData = FindString(sData, true);
+        //bool hasData = FindString(sData, true);
         SetValue(sData);
-        return hasData;
     }
-    return false;
 }
 
 const wxAny LBoundComboBox::GetData()
@@ -245,7 +243,7 @@ bool LBoundComboBox::IsNull()
     }
 }
 
-bool LBoundComboBox::SetNull()
+void LBoundComboBox::SetNull()
 {
     if (IsTranslated())
     {
@@ -255,17 +253,16 @@ bool LBoundComboBox::SetNull()
             if (x == NULL)
             {
                 SetSelection(i);
-                return true;
+                return;
             }
         }
-        return false;
+        return;
     }
     long wsflags = GetWindowStyleFlag();
     SetWindowStyleFlag(0);
     SetSelection(wxNOT_FOUND);
     SetValue(wxEmptyString);
     SetWindowStyleFlag(wsflags);
-    return true;
 }
 
 bool LBoundComboBox::IsDirty()

@@ -8,7 +8,7 @@
  */
 
 #ifndef LBOUNDCONTROL_H
-#define	LBOUNDCONTROL_H
+#define LBOUNDCONTROL_H
 
 #include <wx/wx.h>
 #include "LResultSet.h"
@@ -16,6 +16,7 @@
 #define L_SQLNULL wxString(_T("NULL"))
 
 class LResultSet;
+
 /**
  * Abstract base class for controls interacting with database table columns.
  * 
@@ -26,6 +27,7 @@ class LBoundControl
 public:
     LBoundControl();
     virtual ~LBoundControl();
+
     /**
      * Do not use column aliases.
      * @param newColName
@@ -45,14 +47,16 @@ public:
      * @return 
      */
     virtual const wxAny GetData() = 0;
-    virtual bool SetData(const wxAny& newData) = 0;
+    virtual void SetData(const wxAny& newData) = 0;
     virtual void SetResultSet(LResultSet * newResultSet) = 0;
+
     LResultSet* GetResultSet() const
     {
         return m_rs;
     }
     virtual bool IsNull() = 0;
-    virtual bool SetNull() = 0;
+    virtual void SetNull() = 0;
+
     /**
      * If the database column is numeric, use wxEmptystring, else, use a single quote ' .
      * 
@@ -86,5 +90,5 @@ private:
 
 };
 
-#endif	/* LBOUNDCONTROL_H */
+#endif /* LBOUNDCONTROL_H */
 

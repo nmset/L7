@@ -8,7 +8,7 @@
  */
 
 #ifndef LGRIDDATERENDERER_H
-#define	LGRIDDATERENDERER_H
+#define LGRIDDATERENDERER_H
 
 #include <wx/grid.h>
 
@@ -21,5 +21,5 @@ private:
 
 };
 
-#endif	/* LGRIDDATERENDERER_H */
+#endif /* LGRIDDATERENDERER_H */
 

@@ -12,7 +12,8 @@
 #include "LBoundControl.h"
 
 #ifndef LGRIDCOLEDITOR_H
-#define	LGRIDCOLEDITOR_H
+#define LGRIDCOLEDITOR_H
+
 /**
  * Abstract class defining methods data bound grid cell editors must implement.
  */
@@ -24,8 +25,9 @@ public:
 
     enum COL_TYPE
     {
-        TEXT, COMBO, DATE, CHECK, SPIN
+        TEXT, COMBO, DATE, CHECK, SPIN, JSON_GRID, XML_GRID
     };
+
     /**
      * 
      * @return the database table column name.
@@ -34,7 +36,7 @@ public:
     {
         return m_colName;
     }
-    
+
     int GetType() const
     {
         return m_type;
@@ -74,5 +76,5 @@ private:
 
 };
 
-#endif	/* LGRIDCOLEDITOR_H */
+#endif /* LGRIDCOLEDITOR_H */
 

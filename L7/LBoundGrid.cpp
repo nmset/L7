@@ -18,6 +18,10 @@
 #include "LGridTextRenderer.h"
 #include "LGridSpinEditor.h"
 #include "LGridSpinRenderer.h"
+#include "special/LGridJsonCellRenderer.h"
+#include "special/LGridJsonCellEditor.h"
+#include "special/LGridXmlCellRenderer.h"
+#include "special/LGridXmlCellEditor.h"
 
 LBoundGrid::LBoundGrid(wxWindow* parent, wxWindowID id)
 : wxGrid(parent, id, wxDefaultPosition, wxDefaultSize, wxHSCROLL | wxVSCROLL)
@@ -34,9 +38,10 @@ LBoundGrid::LBoundGrid(wxWindow* parent, wxWindowID id)
     SetTable(m_stringTable);
     SetSelectionMode(wxGridSelectRows);
     CreateMenu();
-    Bind(wxEVT_GRID_RANGE_SELECT, &LBoundGrid::ForceSingleLineRange, this);
-    Bind(wxEVT_GRID_SELECT_CELL, &LBoundGrid::CellSelected, this);
-    Bind(wxEVT_GRID_CELL_RIGHT_CLICK, &LBoundGrid::ShowMenu, this);
+    // These bindings must not propagate to the grid of BaseGridPicker !!!
+    Bind(wxEVT_GRID_RANGE_SELECT, &LBoundGrid::ForceSingleLineRange, this, GetId(), GetId());
+    Bind(wxEVT_GRID_SELECT_CELL, &LBoundGrid::CellSelected, this, GetId(), GetId());
+    Bind(wxEVT_GRID_CELL_RIGHT_CLICK, &LBoundGrid::ShowMenu, this, GetId(), GetId());
 }
 
 LBoundGrid::~LBoundGrid()
@@ -66,8 +71,8 @@ void LBoundGrid::SetResultSet(LResultSet* newResultSet)
 
 void LBoundGrid::ClearGrid()
 {
-    Unbind(wxEVT_GRID_RANGE_SELECT, &LBoundGrid::ForceSingleLineRange, this);
-    Unbind(wxEVT_GRID_SELECT_CELL, &LBoundGrid::CellSelected, this);
+    Unbind(wxEVT_GRID_RANGE_SELECT, &LBoundGrid::ForceSingleLineRange, this, GetId(), GetId());
+    Unbind(wxEVT_GRID_SELECT_CELL, &LBoundGrid::CellSelected, this, GetId(), GetId());
     if (GetNumberRows()) DeleteRows(0, GetNumberRows());
     if (GetNumberCols()) DeleteCols(0, GetNumberCols());
 }
@@ -79,8 +84,8 @@ void LBoundGrid::FillGrid()
     wxGridUpdateLocker locker(this);
     // Starting again, the grid's resultset must free itself from any registered controls.
     RestoreEditorControls();
-    Unbind(wxEVT_GRID_RANGE_SELECT, &LBoundGrid::ForceSingleLineRange, this);
-    Unbind(wxEVT_GRID_SELECT_CELL, &LBoundGrid::CellSelected, this);
+    Unbind(wxEVT_GRID_RANGE_SELECT, &LBoundGrid::ForceSingleLineRange, this, GetId(), GetId());
+    Unbind(wxEVT_GRID_SELECT_CELL, &LBoundGrid::CellSelected, this, GetId(), GetId());
     // Remember some states
     const wxGridSizesInfo colSizes = GetColSizes();
     const int col = GetGridCursorCol() > -1 ? GetGridCursorCol() : 0;
@@ -112,8 +117,8 @@ void LBoundGrid::FillGrid()
             m_stringTable->SetValue(r, c, (m_rs->GetData(r, c)).As<wxString>());
         }
     }
-    Bind(wxEVT_GRID_SELECT_CELL, &LBoundGrid::CellSelected, this);
-    Bind(wxEVT_GRID_RANGE_SELECT, &LBoundGrid::ForceSingleLineRange, this);
+    Bind(wxEVT_GRID_SELECT_CELL, &LBoundGrid::CellSelected, this, GetId(), GetId());
+    Bind(wxEVT_GRID_RANGE_SELECT, &LBoundGrid::ForceSingleLineRange, this, GetId(), GetId());
     // Restore
     SetColSizes(colSizes);
     // synchronize with the resultset
@@ -226,6 +231,54 @@ void LBoundGrid::CreateSpinColumn(const wxString& newColName,
     LGridSpinEditor * ed = new LGridSpinEditor(newColName, newMin, newMax, newInitial);
     colAtt->SetEditor(ed);
     LGridSpinRenderer * rn = new LGridSpinRenderer();
+    colAtt->SetRenderer(rn);
+    colAtt->SetReadOnly(readOnly);
+    colAtt->SetAlignment(wxALIGN_RIGHT, wxALIGN_CENTRE);
+    m_stringTable->SetColAttr(colAtt, col);
+    m_stringTable->SetColLabelValue(col, newLabel);
+    SetColSize(col, width);
+}
+
+void LBoundGrid::CreateJsonGridColumn(const wxString& newColName,
+                                      const wxString& newLabel,
+                                      unsigned int width,
+                                      const wxString& intentLabel,
+                                      const wxArrayString& types,
+                                      wxSize popupSize,
+                                      bool readOnly)
+{
+    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    const int col = m_rs->GetColumnIndex(newColName);
+    wxASSERT_MSG(col > -1, _("Invalid column name : ") + newColName);
+    wxGridCellAttr * colAtt = m_stringTable->GetAttr(GetGridCursorRow(), col, wxGridCellAttr::Col);
+    if (colAtt == NULL) colAtt = new wxGridCellAttr();
+    LGridJsonCellEditor * ed = new LGridJsonCellEditor(newColName, intentLabel, types, popupSize);
+    colAtt->SetEditor(ed);
+    LGridJsonCellRenderer * rn = new LGridJsonCellRenderer();
+    colAtt->SetRenderer(rn);
+    colAtt->SetReadOnly(readOnly);
+    colAtt->SetAlignment(wxALIGN_RIGHT, wxALIGN_CENTRE);
+    m_stringTable->SetColAttr(colAtt, col);
+    m_stringTable->SetColLabelValue(col, newLabel);
+    SetColSize(col, width);
+}
+
+void LBoundGrid::CreateXmlGridColumn(const wxString& newColName,
+                                     const wxString& newLabel,
+                                     unsigned int width,
+                                     const wxString& intentLabel,
+                                     const wxArrayString& types,
+                                     wxSize popupSize,
+                                     bool readOnly)
+{
+    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    const int col = m_rs->GetColumnIndex(newColName);
+    wxASSERT_MSG(col > -1, _("Invalid column name : ") + newColName);
+    wxGridCellAttr * colAtt = m_stringTable->GetAttr(GetGridCursorRow(), col, wxGridCellAttr::Col);
+    if (colAtt == NULL) colAtt = new wxGridCellAttr();
+    LGridXmlCellEditor * ed = new LGridXmlCellEditor(newColName, intentLabel, types, popupSize);
+    colAtt->SetEditor(ed);
+    LGridXmlCellRenderer * rn = new LGridXmlCellRenderer();
     colAtt->SetRenderer(rn);
     colAtt->SetReadOnly(readOnly);
     colAtt->SetAlignment(wxALIGN_RIGHT, wxALIGN_CENTRE);
@@ -427,7 +480,7 @@ void LBoundGrid::ForceSingleLineRange(wxGridRangeSelectEvent& evt)
     {
         wxASSERT_MSG(GetSelectionMode() == wxGridSelectRows, "Selection mode is not wxGridSelectRows.");
         if (evt.ControlDown() == true
-            || evt.GetTopRow() != evt.GetBottomRow())
+                || evt.GetTopRow() != evt.GetBottomRow())
         {
             SelectRow(GetGridCursorRow());
             evt.Veto();
@@ -527,7 +580,8 @@ void LBoundGrid::ShowMenu(wxGridEvent& evt)
 
 void LBoundGrid::MenuAction(wxCommandEvent& evt)
 {
-    switch (evt.GetId()) {
+    switch (evt.GetId())
+    {
     case ID_MNU_SAVE:
         if (m_rs)
         {
@@ -650,7 +704,8 @@ void LBoundGrid::ShowFormView()
         wxControl * fEditor = NULL;
         // One more pointer to a text control
         wxTextCtrl * txtCtrl = NULL;
-        switch (type) {
+        switch (type)
+        {
         case LGridColEditor::TEXT:
             fEditor = static_cast<wxTextCtrl*> (gce->ProvideFormEditor(pan0));
             txtCtrl = static_cast<wxTextCtrl*> (fEditor);
@@ -666,6 +721,12 @@ void LBoundGrid::ShowFormView()
             break;
         case LGridColEditor::SPIN:
             fEditor = static_cast<wxSpinCtrl*> (gce->ProvideFormEditor(pan0));
+            break;
+        case LGridColEditor::JSON_GRID:
+            fEditor = static_cast<JsonGridPickerCtrl*> (gce->ProvideFormEditor(pan0));
+            break;
+        case LGridColEditor::XML_GRID:
+            fEditor = static_cast<XmlGridPickerCtrl*> (gce->ProvideFormEditor(pan0));
             break;
         }
         // A label corresponding to the grid column header

@@ -8,7 +8,7 @@
  */
 
 #ifndef LBOUNDGRID_H
-#define	LBOUNDGRID_H
+#define LBOUNDGRID_H
 
 #include <wx/grid.h>
 #include "LResultSet.h"
@@ -119,6 +119,20 @@ public:
                           int newMax = 100,
                           int newInitial = 0,
                           bool readOnly = false);
+    void CreateJsonGridColumn(const wxString& newColName,
+                              const wxString& newLabel,
+                              unsigned int width,
+                              const wxString& intentLabel,
+                              const wxArrayString& types,
+                              wxSize popupSize = wxDefaultSize,
+                              bool readOnly = false);
+    void CreateXmlGridColumn(const wxString& newColName,
+                             const wxString& newLabel,
+                             unsigned int width,
+                             const wxString& intentLabel,
+                             const wxArrayString& types,
+                             wxSize popupSize = wxDefaultSize,
+                             bool readOnly = false);
     /**
      * 
      * @param col the grid column index
@@ -316,5 +330,5 @@ private:
 
 };
 
-#endif	/* LBOUNDGRID_H */
+#endif /* LBOUNDGRID_H */
 

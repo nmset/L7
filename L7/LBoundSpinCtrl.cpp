@@ -34,9 +34,9 @@ void LBoundSpinCtrl::SetResultSet(LResultSet* newResultSet)
     m_rs->RegisterControl(this);
 }
 
-bool LBoundSpinCtrl::SetData(const wxAny& newData)
+void LBoundSpinCtrl::SetData(const wxAny& newData)
 {
-    if (newData.IsNull() || newData.As<wxString>().IsEmpty() )
+    if (newData.IsNull() || newData.As<wxString>().IsEmpty())
     {
         SetValue(m_initialValue);
     }
@@ -46,7 +46,6 @@ bool LBoundSpinCtrl::SetData(const wxAny& newData)
         newData.GetAs<int>(&iData);
         SetValue(iData);
     }
-    return true;
 }
 
 bool LBoundSpinCtrl::IsDirty()

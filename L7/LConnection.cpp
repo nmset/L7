@@ -53,12 +53,15 @@ LConnectionEvent::LConnectionEvent()
 LConnectionEvent::~LConnectionEvent()
 {
 }
+
 void LConnectionEvent::BeforeExecute(const LConnection* caller)
 {
 }
+
 void LConnectionEvent::AfterExecute(const LConnection* caller)
 {
 }
+
 void LConnectionEvent::Inform(const LConnection* caller, const LInformation& msg) const
 {
 }

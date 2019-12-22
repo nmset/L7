@@ -8,11 +8,12 @@
  */
 
 #ifndef LBOUNDDATEPICKERCTRL_H
-#define	LBOUNDDATEPICKERCTRL_H
+#define LBOUNDDATEPICKERCTRL_H
 
 #include <wx/datectrl.h>
 #include "LBoundControl.h"
 #include "LResultSet.h"
+
 /**
  * Initialised with wxInvalidDateTime. The underlying toolkit must allow wxDP_ALLOWNONE.
  * 
@@ -32,10 +33,8 @@ public:
     /**
      * 
      * @param newData
-     * @return false if newData is not a valid ISO date string.
-     * True if newData is empty, or literal NULL, or a valid ISO date string.
      */
-    bool SetData(const wxAny& newData);
+    void SetData(const wxAny& newData);
     /**
      * Sets the resultset member and registers the control in the resultset.
      * @param newResultSet
@@ -50,7 +49,7 @@ public:
      * Sets the control to invalid date.
      * @return 
      */
-    bool SetNull();
+    void SetNull();
     bool IsDirty();
     /**
      * If IsNull() is true, returns wxEmptyString.
@@ -68,10 +67,10 @@ public:
      * @return 
      */
     static wxDateTime BuildDate(const wxString& ISODate);
-    
+
 private:
 
 };
 
-#endif	/* LBOUNDDATEPICKERCTRL_H */
+#endif /* LBOUNDDATEPICKERCTRL_H */
 

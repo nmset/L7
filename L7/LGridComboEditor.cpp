@@ -59,7 +59,19 @@ wxGridCellEditor* LGridComboEditor::Clone() const
 
 bool LGridComboEditor::EndEdit(int row, int col, const wxGrid* grid, const wxString& oldval, wxString* newval)
 {
-    // What do we do here ?
+    /*
+     * Work around a nasty misbehavior.
+     * Grid columns edited by a translated combobox expect full string
+     * data as cell values. LResultSet::BEData() will report these mapped strings,
+     * instead of database real data. LBoundComboBox::IsDirty() will always be
+     * true even if m_BoundComboBox is unchanged once created.
+     * Simplest workaround : disconnect m_BoundComboBox if unchanged.
+     */
+    if (m_BoundComboBox->GetStringSelection() == oldval && m_BoundComboBox->IsTranslated())
+    {
+        LResultSet * rs = ((LBoundGrid *) grid)->GetResultSet();
+        rs->UnRegisterControl(m_BoundComboBox);
+    }
     return true;
 }
 

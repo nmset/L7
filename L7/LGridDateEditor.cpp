@@ -35,7 +35,8 @@ void LGridDateEditor::Create(wxWindow* parent, wxWindowID id, wxEvtHandler* evtH
 
 void LGridDateEditor::BeginEdit(int row, int col, wxGrid* grid)
 {
-    if (m_control == NULL) {
+    if (m_control == NULL)
+    {
         Create(grid->GetGridWindow(), wxID_ANY, NULL);
     }
     m_BoundDatePicker->SetResultSet(((LBoundGrid *) grid)->GetResultSet());

@@ -8,7 +8,7 @@
  */
 
 #ifndef LGRIDTEXTEDITOR_H
-#define	LGRIDTEXTEDITOR_H
+#define LGRIDTEXTEDITOR_H
 
 #include "LGridColEditor.h"
 #include "LBoundTextCtrl.h"
@@ -88,5 +88,5 @@ private:
     LBoundTextCtrl * m_BoundTextCtrl;
 };
 
-#endif	/* LGRIDTEXTEDITOR_H */
+#endif /* LGRIDTEXTEDITOR_H */
 

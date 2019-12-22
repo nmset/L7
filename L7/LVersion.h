@@ -8,9 +8,9 @@
  */
 
 #ifndef LVERSION_H
-#define	LVERSION_H
+#define LVERSION_H
 
-#define L7_VERSION_STR "4"
+#define L7_VERSION_STR "5"
 
-#endif	/* LVERSION_H */
+#endif /* LVERSION_H */
 

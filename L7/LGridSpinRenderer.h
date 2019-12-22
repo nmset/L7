@@ -8,11 +8,12 @@
  */
 
 #ifndef LGRIDSPINRENDERER_H
-#define	LGRIDSPINRENDERER_H
+#define LGRIDSPINRENDERER_H
 
 #include <wx/grid.h>
 
-class LGridSpinRenderer : public wxGridCellNumberRenderer {
+class LGridSpinRenderer : public wxGridCellNumberRenderer
+{
 public:
     LGridSpinRenderer();
     virtual ~LGridSpinRenderer();
@@ -20,5 +21,5 @@ private:
 
 };
 
-#endif	/* LGRIDSPINRENDERER_H */
+#endif /* LGRIDSPINRENDERER_H */
 
