@@ -52,7 +52,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/usr/local/wxWidgets-Release/lib -lwx_baseu-3.1 -lwx_gtk2u_core-3.1 -lwx_gtk2u_adv-3.1 -Wl,-rpath,'../L7/dist/Release/GNU-Linux' -L../L7/dist/Release/GNU-Linux -lL7 -lpq -lsqlite3
+LDLIBSOPTIONS=-L/usr/local/wxWidgets-Release/lib -lwx_baseu-3.1 -lwx_gtk2u_core-3.1 -lwx_baseu_xml-3.1 -lwxcode_gtk2u_wxjson-3.1 -Wl,-rpath,'../L7/dist/Release/GNU-Linux' -L../L7/dist/Release/GNU-Linux -lL7 -lpq -lsqlite3
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

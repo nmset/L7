@@ -75,7 +75,9 @@ CREATE TABLE tbl1 (
     combo1x character varying(50),
     date1 date,
     spin1 integer DEFAULT 3,
-    rand1 integer DEFAULT round((random() * (10000000)::double precision)) NOT NULL
+    rand1 integer DEFAULT round((random() * (10000000)::double precision)) NOT NULL,
+    json1 jsonb,
+    xml1 text
 );
 
 
@@ -116,7 +118,9 @@ CREATE TABLE tbl2 (
     combo2x character varying(50),
     date2 date,
     spin2 integer DEFAULT 5,
-    rand1 integer
+    rand1 integer,
+    json2 jsonb,
+    xml2 text
 );
 
 

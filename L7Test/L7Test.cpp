@@ -16,7 +16,8 @@
 #include <LItemData.h>
 #include <wx/stdpaths.h>
 #include <wx/filename.h>
-IMPLEMENT_APP( L7Test )
+
+IMPLEMENT_APP(L7Test)
 
 L7Test::L7Test()
 {
@@ -26,21 +27,24 @@ L7Test::~L7Test()
 {
 }
 
-bool L7Test::OnInit() {
+bool L7Test::OnInit()
+{
     L7Frame * main = new L7Frame(NULL, wxID_ANY, _T("L7 Test"));
     SetAppName(_T("L7Test"));
     SetTopWindow(main);
     main->Show();
     return true;
 }
-int L7Test::OnExit() {
+
+int L7Test::OnExit()
+{
     return wxApp::OnExit();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 L7Frame::L7Frame(wxWindow* parent, wxWindowID id, const wxString& title)
-        : wxFrame(parent, id, title)
+: wxFrame(parent, id, title)
 {
     m_conn = NULL;
     m_rsTbl1 = NULL;
@@ -48,16 +52,16 @@ L7Frame::L7Frame(wxWindow* parent, wxWindowID id, const wxString& title)
     colsCreated = false;
     wxBoxSizer* szMain = new wxBoxSizer(wxVERTICAL);
     SetSizer(szMain);
-    
+
     wxPanel * panConn = new wxPanel(this, wxID_ANY);
-    szMain->Add(panConn, 0 , wxEXPAND, 0);
+    szMain->Add(panConn, 0, wxEXPAND, 0);
     wxBoxSizer * szConn = new wxBoxSizer(wxVERTICAL);
     panConn->SetSizer(szConn);
     const wxString b[3]{_T("Choose"), _T("PostgreSQL"), _T("SQLite")};
     rdBE = new wxRadioBox(panConn, wxID_ANY, _T("Backend"), wxDefaultPosition, wxDefaultSize, 3, b);
     szConn->Add(rdBE, 0, wxALIGN_CENTER_HORIZONTAL, 0);
     wxBoxSizer * szDoConn = new wxBoxSizer(wxHORIZONTAL);
-    szConn->Add(szDoConn, 0 , wxEXPAND);
+    szConn->Add(szDoConn, 0, wxEXPAND);
     m_txtConnInfo = new wxTextCtrl(panConn, wxID_ANY);
     szDoConn->Add(m_txtConnInfo, 1, wxALIGN_CENTRE_VERTICAL);
     wxButton * btnConn = new wxButton(panConn, wxID_ANY, _("Connect"));
@@ -68,7 +72,7 @@ L7Frame::L7Frame(wxWindow* parent, wxWindowID id, const wxString& title)
     rdBE->Bind(wxEVT_RADIOBOX, &L7Frame::OnRadioConnClick, this);
     btnConn->Bind(wxEVT_BUTTON, &L7Frame::OnButtonConnectClick, this);
     btnNewFrame->Bind(wxEVT_BUTTON, &L7Frame::OnButtonNewFrameClick, this);
-    
+
     wxPanel * panTbl1 = new wxPanel(this, wxID_ANY);
     szMain->Add(panTbl1, 0, wxEXPAND, 0);
     wxBoxSizer * szTbl1 = new wxBoxSizer(wxVERTICAL);
@@ -78,45 +82,60 @@ L7Frame::L7Frame(wxWindow* parent, wxWindowID id, const wxString& title)
     flxszTbl1->AddGrowableCol(1, 3);
     szTbl1->Add(flxszTbl1, 0, wxEXPAND, 0);
     wxStaticText * lbl = new wxStaticText(panTbl1, wxID_ANY, _T("pk1"));
-    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 0);
+    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 0);
     Pk1 = new LBoundTextCtrl(panTbl1, wxID_ANY);
     Pk1->SetSQLQuote(wxEmptyString);
-    flxszTbl1->Add(Pk1, 0, wxEXPAND|wxALIGN_CENTER_VERTICAL, 0);
+    flxszTbl1->Add(Pk1, 0, wxEXPAND | wxALIGN_CENTER_VERTICAL, 0);
     Pk1->SetEditable(false);
     lbl = new wxStaticText(panTbl1, wxID_ANY, _T("text1"));
-    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 0);
+    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 0);
     Text1 = new LBoundTextCtrl(panTbl1, wxID_ANY);
-    flxszTbl1->Add(Text1, 0, wxEXPAND|wxALIGN_CENTER_VERTICAL, 0);
+    flxszTbl1->Add(Text1, 0, wxEXPAND | wxALIGN_CENTER_VERTICAL, 0);
     lbl = new wxStaticText(panTbl1, wxID_ANY, _T("check1d"));
-    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 0);
+    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 0);
     Check1d = new LBoundCheckBox(panTbl1, wxID_ANY, wxCHK_2STATE);
     Check1d->SetLabel(wxEmptyString);
     flxszTbl1->Add(Check1d, 0, wxALIGN_CENTER_VERTICAL, 0);
     lbl = new wxStaticText(panTbl1, wxID_ANY, _T("check1t"));
-    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 0);
-    Check1t = new LBoundCheckBox(panTbl1, wxID_ANY, wxCHK_3STATE|wxCHK_ALLOW_3RD_STATE_FOR_USER);
+    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 0);
+    Check1t = new LBoundCheckBox(panTbl1, wxID_ANY, wxCHK_3STATE | wxCHK_ALLOW_3RD_STATE_FOR_USER);
     Check1t->SetLabel(wxEmptyString);
     flxszTbl1->Add(Check1t, 0, wxALIGN_CENTER_VERTICAL, 0);
     lbl = new wxStaticText(panTbl1, wxID_ANY, _T("combo1t"));
-    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 0);
+    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 0);
     Combo1t = new LBoundComboBox(panTbl1, wxID_ANY);
     flxszTbl1->Add(Combo1t, 0, wxALIGN_CENTER_VERTICAL, 0);
     lbl = new wxStaticText(panTbl1, wxID_ANY, _T("combo1x"));
-    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 0);
+    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 0);
     Combo1x = new LBoundComboBox(panTbl1, wxID_ANY);
     Combo1x->SetSQLQuote(_T("'"));
     flxszTbl1->Add(Combo1x, 0, wxALIGN_CENTER_VERTICAL, 0);
     lbl = new wxStaticText(panTbl1, wxID_ANY, _T("date1"));
-    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 0);
+    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 0);
     Date1 = new LBoundDatePickerCtrl(panTbl1, wxID_ANY);
     flxszTbl1->Add(Date1, 0, wxALIGN_CENTER_VERTICAL, 0);
     lbl = new wxStaticText(panTbl1, wxID_ANY, _T("spin1"));
-    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 0);
+    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 0);
     Spin1 = new LBoundSpinCtrl(panTbl1, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS | wxALIGN_RIGHT, -10, 25, 3);
     flxszTbl1->Add(Spin1, 0, wxALIGN_CENTER_VERTICAL, 0);
+    lbl = new wxStaticText(panTbl1, wxID_ANY, _T("json1"));
+    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 0);
+    wxArrayString types;
+    types.Add(_("Work"));
+    types.Add(_("Home"));
+    types.Add(_("Other"));
+    Json1 = new LBoundJsonGridPicker(panTbl1, wxID_ANY, types);
+    flxszTbl1->Add(Json1, 0, wxEXPAND | wxALIGN_CENTER_VERTICAL, 0);
+    lbl = new wxStaticText(panTbl1, wxID_ANY, _T("xml1"));
+    flxszTbl1->Add(lbl, 0, wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 0);
+    Xml1 = new LBoundXmlGridPicker(panTbl1, wxID_ANY, types);
+    flxszTbl1->Add(Xml1, 0, wxEXPAND | wxALIGN_CENTER_VERTICAL, 0);
     navTbl1 = new LNavigator(panTbl1, wxID_ANY);
     szTbl1->Add(navTbl1, 0, wxEXPAND, 0);
-    
+
+    Json1->SetIntentLabel(_("Email"));
+    Xml1->SetIntentLabel(_("Phone"));
+
     grid = new LBoundGrid(this, wxID_ANY);
     szMain->Add(grid, 1, wxEXPAND, 0);
     grid->SetGridFormEventHandler(new GridEVH(this));
@@ -124,9 +143,11 @@ L7Frame::L7Frame(wxWindow* parent, wxWindowID id, const wxString& title)
     txtMessages = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
     //szMain->Add(txtMessages, 1, wxEXPAND|wxALIGN_BOTTOM, 0);
     szMain->Add(txtMessages, 1, wxEXPAND, 0);
-    SetSize(800, 600);
+    SetSize(1200, 800);
 }
-L7Frame::~L7Frame() {
+
+L7Frame::~L7Frame()
+{
     delete m_txtConnInfo;
     delete txtMessages;
     delete rdBE;
@@ -138,6 +159,8 @@ L7Frame::~L7Frame() {
     delete Combo1x;
     delete Date1;
     delete Spin1;
+    delete Json1;
+    delete Xml1;
     delete navTbl1; // Has deleted and unregistered it's own event handler.
     if (m_rsTbl1) {
         for (unsigned int i = 0; i < m_rsTbl1->GetEventHandlers().Count(); i++) {
@@ -161,27 +184,35 @@ L7Frame::~L7Frame() {
     delete grid->GetGridFormEventHandler();
 }
 
-void L7Frame::AppendMsg(const wxString& msg) {
-    static int n =0;
+void L7Frame::AppendMsg(const wxString& msg)
+{
+    static int n = 0;
     txtMessages->AppendText(wxAny(n).As<wxString>() + _T(". ") + msg + _T("\n"));
     n++;
 }
-void L7Frame::MsgBox(const wxString& msg) {
-    wxMessageBox(msg, wxApp::GetInstance()->GetAppName(), wxOK|wxCENTRE, this);
+
+void L7Frame::MsgBox(const wxString& msg)
+{
+    wxMessageBox(msg, wxApp::GetInstance()->GetAppName(), wxOK | wxCENTRE, this);
 }
-void L7Frame::OnRadioConnClick(wxCommandEvent& evt) {
+
+void L7Frame::OnRadioConnClick(wxCommandEvent& evt)
+{
     wxString connInfo;
     if (evt.GetInt() == 1) {
         connInfo = _T("host=localhost port=5424 dbname=l7 user=l7 password=L7");
-    } else if (evt.GetInt() == 2) {
+    }
+    else if (evt.GetInt() == 2) {
         connInfo = wxStandardPaths::Get().GetUserDataDir()
                 + wxFileName::GetPathSeparator()
                 + _T("L7.db");
     }
-    m_txtConnInfo->SetValue(connInfo); 
+    m_txtConnInfo->SetValue(connInfo);
     rdBE->Enable(false);
 }
-void L7Frame::OnButtonConnectClick(wxCommandEvent& evt) {
+
+void L7Frame::OnButtonConnectClick(wxCommandEvent& evt)
+{
     if (rdBE->GetSelection() == 0) return;
     if (!m_conn) {
         if (rdBE->GetSelection() == 1) {
@@ -192,7 +223,8 @@ void L7Frame::OnButtonConnectClick(wxCommandEvent& evt) {
                 m_rsTbl1 = new PQ::LPQResultSet(m_conn);
                 rsTbl2 = new PQ::LPQResultSet(m_conn);
             }
-        } else if (rdBE->GetSelection() == 2) {
+        }
+        else if (rdBE->GetSelection() == 2) {
             m_conn = new SQ::LSQConnection(m_txtConnInfo->GetValue());
             ConnectionEVH * connEVH = new ConnectionEVH(this);
             m_conn->RegisterEventHandler(connEVH);
@@ -204,14 +236,26 @@ void L7Frame::OnButtonConnectClick(wxCommandEvent& evt) {
             }
         }
         if (m_conn->IsValid()) {
-            Pk1->SetColumnName(_T("pk1"));          Pk1->SetResultSet(m_rsTbl1);
-            Text1->SetColumnName(_T("text1"));      Text1->SetResultSet(m_rsTbl1);
-            Check1d->SetColumnName(_T("check1d"));  Check1d->SetResultSet(m_rsTbl1);
-            Check1t->SetColumnName(_T("check1t"));  Check1t->SetResultSet(m_rsTbl1);
-            Combo1t->SetColumnName(_T("combo1t"));  Combo1t->SetResultSet(m_rsTbl1);
-            Combo1x->SetColumnName(_T("combo1x"));  Combo1x->SetResultSet(m_rsTbl1);
-            Date1->SetColumnName(_T("date1"));      Date1->SetResultSet(m_rsTbl1);
-            Spin1->SetColumnName(_T("spin1"));      Spin1->SetResultSet(m_rsTbl1);
+            Pk1->SetColumnName(_T("pk1"));
+            Pk1->SetResultSet(m_rsTbl1);
+            Text1->SetColumnName(_T("text1"));
+            Text1->SetResultSet(m_rsTbl1);
+            Check1d->SetColumnName(_T("check1d"));
+            Check1d->SetResultSet(m_rsTbl1);
+            Check1t->SetColumnName(_T("check1t"));
+            Check1t->SetResultSet(m_rsTbl1);
+            Combo1t->SetColumnName(_T("combo1t"));
+            Combo1t->SetResultSet(m_rsTbl1);
+            Combo1x->SetColumnName(_T("combo1x"));
+            Combo1x->SetResultSet(m_rsTbl1);
+            Date1->SetColumnName(_T("date1"));
+            Date1->SetResultSet(m_rsTbl1);
+            Spin1->SetColumnName(_T("spin1"));
+            Spin1->SetResultSet(m_rsTbl1);
+            Json1->SetColumnName(_T("json1"));
+            Json1->SetResultSet(m_rsTbl1);
+            Xml1->SetColumnName(_T("xml1"));
+            Xml1->SetResultSet(m_rsTbl1);
             Pk1->SetSQLQuote(wxEmptyString);
             FillComboBox(Combo1t, _T("SELECT id_list1, item FROM list1 ORDER BY id_list1"));
             FillComboBox(Combo1x, _T("SELECT item FROM list1 ORDER BY id_list1"));
@@ -227,7 +271,7 @@ void L7Frame::OnButtonConnectClick(wxCommandEvent& evt) {
             rsTbl2->SetChildColumnNames(_T("pk1;rand1"));
             rsTbl2->SetMasterResultSet(m_rsTbl1);
             grid->SetResultSet(rsTbl2);
-            rsTbl2->RegisterEventHandler(new ResultSetTbl2EVH(this));            
+            rsTbl2->RegisterEventHandler(new ResultSetTbl2EVH(this));
             FilterGrid();
         }
     }
@@ -238,19 +282,24 @@ void L7Frame::OnButtonConnectClick(wxCommandEvent& evt) {
         wxDELETE(m_conn);
     }
 }
-void L7Frame::OnButtonNewFrameClick(wxCommandEvent& evt) {
+
+void L7Frame::OnButtonNewFrameClick(wxCommandEvent& evt)
+{
     L7Frame * newFrame = new L7Frame(NULL, wxID_ANY, GetTitle());
     newFrame->Show();
 }
 
-void L7Frame::FillComboBox(LBoundComboBox* cmb, const wxString& sql) {
+void L7Frame::FillComboBox(LBoundComboBox* cmb, const wxString& sql)
+{
     if (!m_conn || !cmb) return;
     LLightResultSet * rs;
     if (rdBE->GetSelection() == 1) {
         rs = new PQ::LLightPQResultSet(m_conn);
-    } else if (rdBE->GetSelection() == 2) {
+    }
+    else if (rdBE->GetSelection() == 2) {
         rs = new SQ::LLightSQResultSet(m_conn);
-    } else {
+    }
+    else {
         return;
     }
     rs->SetSQL(sql);
@@ -262,13 +311,16 @@ void L7Frame::FillComboBox(LBoundComboBox* cmb, const wxString& sql) {
             const wxString idCol = rs->GetColumnName(0);
             do {
                 cmb->Append(rs->GetData(dispCol).As<wxString>(), new LItemData(rs->GetData(idCol)));
-            } while (rs->Next());
-        } else {
+            }
+            while (rs->Next());
+        }
+        else {
             cmb->Append(wxEmptyString);
             const wxString dispCol = rs->GetColumnName(0);
             do {
                 cmb->Append(rs->GetData(dispCol).As<wxString>());
-            } while (rs->Next());
+            }
+            while (rs->Next());
         }
         delete rs;
     }
@@ -277,14 +329,14 @@ void L7Frame::FillComboBox(LBoundComboBox* cmb, const wxString& sql) {
 void L7Frame::FilterGrid()
 {
     wxString sql = _T("SELECT rand1, PK2, PK1, text2, check2d, check2t, list1.item AS combo2t,"
-            " combo2x, date2, spin2 FROM tbl2"
-            " LEFT JOIN list1 ON tbl2.combo2t = list1.id_list1"
-            " WHERE tbl2.pk1");
+                      " combo2x, date2, spin2, json2, xml2 FROM tbl2"
+                      " LEFT JOIN list1 ON tbl2.combo2t = list1.id_list1"
+                      " WHERE tbl2.pk1");
     sql += Pk1->GetValue().IsEmpty() ? _T(" IS NULL ") : _T(" = ") + Pk1->GetValue();
     sql += " ORDER BY tbl2.text2";
     rsTbl2->SetSQL(sql);
     grid->FillGrid();
-    
+
     if (!colsCreated) {
         grid->SetDefaultRowSize(40, true);
         grid->CreateTextColumn(_T("Pk2"), _T("PK2"), 40, false, true);
@@ -296,8 +348,14 @@ void L7Frame::FilterGrid()
         grid->CreateComboBoxColumn(_T("combo2x"), _T("Combo txt"), 80);
         grid->CreateDateColumn(_T("date2"), _T("Date"), 80);
         grid->CreateSpinColumn(_T("spin2"), _T("Spin"), 60, -20, 20, 5);
+        wxArrayString types;
+        types.Add(_("Work"));
+        types.Add(_("Home"));
+        types.Add(_("Any"));
+        grid->CreateJsonGridColumn(_T("json2"), _T("Json 2"), 80, _("Email"), types, wxSize(450, -1));
+        grid->CreateXmlGridColumn(_T("xml2"), _T("XML 2"), 80, _("Phone"), types, wxSize(450, -1));
         grid->CreateTextColumn(_T("rand1"), _T("Random"), 80, false, true);
-    
+
         LBoundComboBox * Combo2t = static_cast<LBoundComboBox*> (grid->GetBoundControl(grid->GetGridCursorRow(), _T("combo2t"), false));
         FillComboBox(Combo2t, _T("SELECT id_list1, item FROM list1 ORDER BY id_list1"));
         LBoundComboBox * Combo2x = static_cast<LBoundComboBox*> (grid->GetBoundControl(grid->GetGridCursorRow(), _T("combo2x"), false));
@@ -313,43 +371,64 @@ void L7Frame::FilterGrid()
 
 ///////////////////////////////////////////////////////////////////////////////
 
-ConnectionEVH::ConnectionEVH(L7Frame* newOwner) {
+ConnectionEVH::ConnectionEVH(L7Frame* newOwner)
+{
     owner = newOwner;
 }
-ConnectionEVH::~ConnectionEVH() {
-    
+
+ConnectionEVH::~ConnectionEVH()
+{
+
 }
-void ConnectionEVH::Inform(const LConnection* caller, const LInformation& msg) const {
+
+void ConnectionEVH::Inform(const LConnection* caller, const LInformation& msg) const
+{
     owner->MsgBox(msg.GetFullInformation());
 }
-void ConnectionEVH::BeforeExecute(const LConnection* caller) {
+
+void ConnectionEVH::BeforeExecute(const LConnection* caller)
+{
     owner->AppendMsg(_T("LConnection::BeforeExecute"));
 }
-void ConnectionEVH::AfterExecute(const LConnection* caller) {
+
+void ConnectionEVH::AfterExecute(const LConnection* caller)
+{
     owner->AppendMsg(_T("LConnection::AfterExecute"));
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-ResultSetTbl1EVH::ResultSetTbl1EVH(L7Frame* newOwner) {
+ResultSetTbl1EVH::ResultSetTbl1EVH(L7Frame* newOwner)
+{
     owner = newOwner;
 }
-ResultSetTbl1EVH::~ResultSetTbl1EVH() {
-    
+
+ResultSetTbl1EVH::~ResultSetTbl1EVH()
+{
+
 }
-void ResultSetTbl1EVH::Inform(const LResultSet* caller, const LInformation& msg) const {
+
+void ResultSetTbl1EVH::Inform(const LResultSet* caller, const LInformation& msg) const
+{
     owner->MsgBox(msg.GetFullInformation());
 }
-void ResultSetTbl1EVH::AfterAction(LResultSet* caller, ACTIONS action) {
+
+void ResultSetTbl1EVH::AfterAction(LResultSet* caller, ACTIONS action)
+{
     owner->AppendMsg(_T("LResultSet::AfterAction - ") + caller->GetTableName() + _T(" - ") + wxAny((int) action).As<wxString>());
 }
-void ResultSetTbl1EVH::AfterChangeRow(LResultSet* caller) {
+
+void ResultSetTbl1EVH::AfterChangeRow(LResultSet* caller)
+{
     owner->AppendMsg(_T("LResultSet::AfterChangeRow - ") + caller->GetTableName());
     owner->FilterGrid();
 }
-void ResultSetTbl1EVH::AfterDelete(LResultSet* caller, const wxAny& oldPK, const wxString& sql) {
+
+void ResultSetTbl1EVH::AfterDelete(LResultSet* caller, const wxAny& oldPK, const wxString& sql)
+{
     owner->AppendMsg(_T("LResultSet::AfterDelete - ") + caller->GetTableName() + _T(" - ") + sql);
 }
+
 void ResultSetTbl1EVH::AfterInsert(LResultSet* caller, const wxAny& newPK, const wxString& sql)
 {
     owner->AppendMsg(_T("LResultSet::AfterInsert - ") + caller->GetTableName() + _T(" - ") + sql);
@@ -405,24 +484,36 @@ void ResultSetTbl1EVH::BeforeUpdate(LResultSet* caller)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-ResultSetTbl2EVH::ResultSetTbl2EVH(L7Frame* newOwner) {
+ResultSetTbl2EVH::ResultSetTbl2EVH(L7Frame* newOwner)
+{
     owner = newOwner;
 }
-ResultSetTbl2EVH::~ResultSetTbl2EVH() {
-    
+
+ResultSetTbl2EVH::~ResultSetTbl2EVH()
+{
+
 }
-void ResultSetTbl2EVH::Inform(const LResultSet* caller, const LInformation& msg) const {
+
+void ResultSetTbl2EVH::Inform(const LResultSet* caller, const LInformation& msg) const
+{
     owner->MsgBox(msg.GetFullInformation());
 }
-void ResultSetTbl2EVH::AfterAction(LResultSet* caller, ACTIONS action) {
+
+void ResultSetTbl2EVH::AfterAction(LResultSet* caller, ACTIONS action)
+{
     owner->AppendMsg(_T("LResultSet::AfterAction - ") + caller->GetTableName() + _T(" - ") + wxAny((int) action).As<wxString>());
 }
-void ResultSetTbl2EVH::AfterChangeRow(LResultSet* caller) {
+
+void ResultSetTbl2EVH::AfterChangeRow(LResultSet* caller)
+{
     owner->AppendMsg(_T("LResultSet::AfterChangeRow - ") + caller->GetTableName());
 }
-void ResultSetTbl2EVH::AfterDelete(LResultSet* caller, const wxAny& oldPK, const wxString& sql) {
+
+void ResultSetTbl2EVH::AfterDelete(LResultSet* caller, const wxAny& oldPK, const wxString& sql)
+{
     owner->AppendMsg(_T("LResultSet::AfterDelete - ") + caller->GetTableName() + _T(" - ") + sql);
 }
+
 void ResultSetTbl2EVH::AfterInsert(LResultSet* caller, const wxAny& newPK, const wxString& sql)
 {
     owner->AppendMsg(_T("LResultSet::AfterInsert - ") + caller->GetTableName() + _T(" - ") + sql);

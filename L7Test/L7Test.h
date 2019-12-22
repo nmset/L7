@@ -19,6 +19,8 @@
 #include <LBoundSpinCtrl.h>
 #include <LNavigator.h>
 #include <LBoundGrid.h>
+#include <special/LBoundJsonGridPicker.h>
+#include <special/LBoundXmlGridPicker.h>
 
 class L7Test;
 class L7Frame;
@@ -62,6 +64,8 @@ private:
     LBoundSpinCtrl * Spin1;
     LNavigator * navTbl1;
     LBoundGrid * grid;
+    LBoundJsonGridPicker * Json1;
+    LBoundXmlGridPicker * Xml1;
     bool colsCreated;
     
     void AppendMsg(const wxString& msg);

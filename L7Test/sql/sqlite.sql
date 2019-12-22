@@ -13,6 +13,8 @@ CREATE TABLE tbl2 (
     "date2" TEXT,
     "spin2" INTEGER DEFAULT 5,
     "rand1" INTEGER NOT NULL DEFAULT (abs(random())),
+    "json2" TEXT,
+    "xml2" TEXT,
     foreign key (combo2t) references list1(id_list1),
     foreign key (pk1) references tbl1(pk1)
 );
@@ -25,7 +27,9 @@ CREATE TABLE tbl1 (
     "combo1x" TEXT,
     "date1" TEXT,
     "spin1" INTEGER DEFAULT 3,
-    "rand1" INTEGER NOT NULL DEFAULT (abs(random()))
+    "rand1" INTEGER NOT NULL DEFAULT (abs(random())),
+    "json1" TEXT,
+    "xml1" TEXT
 );
 
 INSERT INTO List1 VALUES(1, 'List1Item1');

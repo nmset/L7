@@ -26,6 +26,17 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -58,7 +69,8 @@
           <linkerLibItems>
             <linkerLibLibItem>wx_baseu-3.1</linkerLibLibItem>
             <linkerLibLibItem>wx_gtk2u_core-3.1</linkerLibLibItem>
-            <linkerLibLibItem>wx_gtk2u_adv-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wx_baseu_xml-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wxcode_gtk2ud_wxjson-3.1</linkerLibLibItem>
             <linkerLibLibItem>pq</linkerLibLibItem>
             <linkerLibLibItem>sqlite3</linkerLibLibItem>
             <linkerLibProjectItem>
@@ -122,7 +134,8 @@
           <linkerLibItems>
             <linkerLibLibItem>wx_baseu-3.1</linkerLibLibItem>
             <linkerLibLibItem>wx_gtk2u_core-3.1</linkerLibLibItem>
-            <linkerLibLibItem>wx_gtk2u_adv-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wx_baseu_xml-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wxcode_gtk2u_wxjson-3.1</linkerLibLibItem>
             <linkerLibProjectItem>
               <makeArtifact PL="../L7"
                             CT="2"
