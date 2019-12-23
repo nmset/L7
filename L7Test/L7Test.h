@@ -33,6 +33,8 @@ public:
     
     bool OnInit();
     int OnExit();
+    void OnAssertFailure(const wxChar* file, int line, const wxChar* func, const wxChar* cond, const wxChar* msg) override;
+
 
 private:
 

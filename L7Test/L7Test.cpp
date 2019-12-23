@@ -41,6 +41,10 @@ int L7Test::OnExit()
     return wxApp::OnExit();
 }
 
+void L7Test::OnAssertFailure(const wxChar* file, int line, const wxChar* func, const wxChar* cond, const wxChar* msg)
+{
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 L7Frame::L7Frame(wxWindow* parent, wxWindowID id, const wxString& title)
