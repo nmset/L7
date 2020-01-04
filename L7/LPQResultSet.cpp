@@ -63,6 +63,7 @@ bool LPQResultSet::RunSQL()
             m_initialised = true;
             InformInitialised();
         }
+        InformDataChanged();
         return true;
     }
     else

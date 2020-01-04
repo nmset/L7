@@ -141,3 +141,9 @@ void XmlGridEditorRsEVH::AfterAction(LResultSet * caller, ACTIONS action)
         m_owner->m_xmlBuffer.MakeNull();
     }
 }
+
+void XmlGridEditorRsEVH::DataChanged(LResultSet* caller)
+{
+    m_rs = caller;
+    m_owner->m_xmlBuffer.MakeNull();
+}

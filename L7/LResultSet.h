@@ -217,6 +217,7 @@ protected:
 
     wxArrayPtrVoid m_evtHandlers;
     void InformInitialised();
+    void InformDataChanged();
     void InformBeforeSave();
     void InformBeforeInsert();
     void InformBeforeUpdate();
@@ -253,6 +254,7 @@ public:
         ACTION_ADDNEW = 0, ACTION_SAVE, ACTION_CANCEL, ACTION_REFRESH, ACTION_DELETE
     };
     virtual void Initialised(LResultSet * caller);
+    virtual void DataChanged(LResultSet * caller);
     virtual void BeforeSave(LResultSet * caller);
     virtual void BeforeInsert(LResultSet * caller);
     virtual void BeforeUpdate(LResultSet * caller);

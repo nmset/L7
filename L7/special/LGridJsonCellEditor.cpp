@@ -142,3 +142,9 @@ void JsonGridEditorRsEVH::AfterAction(LResultSet * caller, ACTIONS action)
         m_owner->m_jsonBuffer.MakeNull();
     }
 }
+
+void JsonGridEditorRsEVH::DataChanged(LResultSet* caller)
+{
+    m_rs = caller;
+    m_owner->m_jsonBuffer.MakeNull();
+}

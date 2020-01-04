@@ -109,6 +109,7 @@ private:
     XmlGridEditorRsEVH(LGridXmlCellEditor * owner);
     virtual ~XmlGridEditorRsEVH();
     virtual void AfterAction(LResultSet * caller, ACTIONS action);
+    virtual void DataChanged(LResultSet* caller);
 
     void SetResultSet(LResultSet * caller)
     {

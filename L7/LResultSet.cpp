@@ -203,6 +203,16 @@ void LResultSet::InformInitialised()
     }
 }
 
+void LResultSet::InformDataChanged()
+{
+    for (int i = 0; i < m_evtHandlers.GetCount(); i++)
+    {
+        void * p = m_evtHandlers.Item(i);
+        LResultSetEvent * evh = static_cast<LResultSetEvent*> (p);
+        if (evh != NULL) evh->DataChanged(this);
+    }
+}
+
 void LResultSet::InformBeforeSave()
 {
     for (int i = 0; i < m_evtHandlers.GetCount(); i++)
@@ -387,6 +397,10 @@ LResultSetEvent::~LResultSetEvent()
 }
 
 void LResultSetEvent::Initialised(LResultSet* caller)
+{
+}
+
+void LResultSetEvent::DataChanged(LResultSet* caller)
 {
 }
 

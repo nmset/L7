@@ -110,6 +110,7 @@ private:
     JsonGridEditorRsEVH(LGridJsonCellEditor * owner);
     virtual ~JsonGridEditorRsEVH();
     virtual void AfterAction(LResultSet * caller, ACTIONS action);
+    virtual void DataChanged(LResultSet* caller);
 
     void SetResultSet(LResultSet * caller)
     {
