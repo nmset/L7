@@ -9,6 +9,14 @@
         <group>
             <file>file:/home/user/Documents/published/L7/L7/LBoundGrid.cpp</file>
             <file>file:/home/user/Documents/published/L7/L7/LBoundGrid.h</file>
+            <file>file:/home/user/Documents/published/L7/L7/special/LGridXmlCellEditor.h</file>
+            <file>file:/home/user/Documents/published/L7/L7/special/LGridJsonCellEditor.h</file>
+            <file>file:/home/user/Documents/published/L7/L7/special/LGridJsonCellEditor.cpp</file>
+            <file>file:/home/user/Documents/published/L7/L7/LSQResultSet.cpp</file>
+            <file>file:/home/user/Documents/published/L7/L7/special/LGridXmlCellEditor.cpp</file>
+            <file>file:/home/user/Documents/published/L7/L7/LResultSet.cpp</file>
+            <file>file:/home/user/Documents/published/L7/L7/LResultSet.h</file>
+            <file>file:/home/user/Documents/published/L7/L7/LPQResultSet.cpp</file>
         </group>
     </open-files>
 </project-private>

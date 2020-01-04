@@ -1,6 +1,6 @@
 /* 
  * File:   LSQConnection.h
- * Author: SET - nmset@netcourrier.com
+ * Author: SET - nmset@yandex.com
  * License : LGPL version 2.1
  * Copyright SET, M. D. - © 2014
  *

@@ -5,7 +5,7 @@ It's a generic spin-off of a production library I'm using.
 
 Released under the LGPL 2.1 of the Free software Foundation.
 
-Author and copyright : SET, M.D. , nmset@netcourrier.com
+Author and copyright : SET, M.D. , nmset@yandex.com
 
 Developped with NetBeans.
 

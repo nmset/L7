@@ -1,7 +1,7 @@
 /* 
  * File:   L7Test.cpp
- * Author: Saleem EDAH-TALLY - nmset@netcourrier.com
- * Copyright Saleem EDAH-TALLY - © 2014
+ * Author: SET - nmset@yandex.com
+ * Copyright SET - © 2014
  * 
  * Created on 4 juin 2014, 20:42
  */

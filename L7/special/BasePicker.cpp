@@ -1,6 +1,6 @@
 /* 
  * File:   BasePicker.cpp
- * Author: SET - nmset@netcourrier.com
+ * Author: SET - nmset@yandex.com
  * License : LGPL version 2.1
  * Copyright SET, M. D. - © 2014
  * 
@@ -29,6 +29,7 @@ BasePicker::BasePicker(wxWindow *parent,
     SetPickerCtrl(btn);
     wxPickerBase::PostCreation();
     GetTextCtrl()->SetEditable(false);
+    GetTextCtrl()->SetMaxLength(0);
     SetTextCtrlGrowable(true);
     SetPickerCtrlGrowable(true);
 }
