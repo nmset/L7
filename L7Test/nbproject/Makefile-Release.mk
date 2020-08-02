@@ -52,7 +52,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/usr/local/wxWidgets-Release/lib -lwx_baseu-3.1 -lwx_gtk2u_core-3.1 -lwx_baseu_xml-3.1 -lwxcode_gtk2u_wxjson-3.1 -Wl,-rpath,'../L7/dist/Release/GNU-Linux' -L../L7/dist/Release/GNU-Linux -lL7 -lpq -lsqlite3
+LDLIBSOPTIONS=-L/usr/local/wxWidgets-Release/lib -lwx_baseu-3.1 -lwx_gtk3u_core-3.1 -lwx_baseu_xml-3.1 -lwxcode_gtk3u_wxjson-3.1 -Wl,-rpath,'../L7/dist/Release/GNU-Linux' -L../L7/dist/Release/GNU-Linux -lL7 -lpq -lsqlite3
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -67,7 +67,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/l7test: ${OBJECTFILES}
 ${OBJECTDIR}/L7Test.o: L7Test.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -s -DUSE_LIBPQ -DUSE_LIBSQ -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -DwxDEBUG_LEVEL=0 -I/usr/local/wxWidgets-Release/include/wx-3.1 -I/usr/local/wxWidgets-Release/lib/wx/include/gtk2-unicode-3.1 -I../L7 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/L7Test.o L7Test.cpp
+	$(COMPILE.cc) -O2 -s -DUSE_LIBPQ -DUSE_LIBSQ -DWXUSINGDLL -D_FILE_OFFSET_BITS=64 -D__WXGTK__ -DwxDEBUG_LEVEL=0 -I/usr/local/wxWidgets-Release/include/wx-3.1 -I/usr/local/wxWidgets-Release/lib/wx/include/gtk3-unicode-3.1 -I../L7 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/L7Test.o L7Test.cpp
 
 # Subprojects
 .build-subprojects:

@@ -127,7 +127,7 @@
       <compileType>
         <ccTool>
           <incDir>
-            <pElem>/usr/local/wxWidgets/lib/wx/include/gtk2-unicode-3.1</pElem>
+            <pElem>/usr/local/wxWidgets/lib/wx/include/gtk3-unicode-3.1</pElem>
             <pElem>/usr/local/wxWidgets/include/wx-3.1</pElem>
             <pElem>/usr/local/wxWidgets/include</pElem>
           </incDir>
@@ -146,9 +146,9 @@
           <commandlineTool>g++</commandlineTool>
           <linkerLibItems>
             <linkerLibLibItem>wx_baseu-3.1</linkerLibLibItem>
-            <linkerLibLibItem>wx_gtk2u_core-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wx_gtk3u_core-3.1</linkerLibLibItem>
             <linkerLibLibItem>wx_baseu_xml-3.1</linkerLibLibItem>
-            <linkerLibLibItem>wxcode_gtk2ud_wxjson-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wxcode_gtk3ud_wxjson-3.1</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -342,7 +342,7 @@
           <stripSymbols>true</stripSymbols>
           <incDir>
             <pElem>/usr/local/wxWidgets-Release/include/wx-3.1</pElem>
-            <pElem>/usr/local/wxWidgets-Release/lib/wx/include/gtk2-unicode-3.1</pElem>
+            <pElem>/usr/local/wxWidgets-Release/lib/wx/include/gtk3-unicode-3.1</pElem>
             <pElem>/usr/local/wxWidgets-Release/include</pElem>
           </incDir>
           <preprocessorList>
@@ -367,9 +367,9 @@
           <stripSymbols>true</stripSymbols>
           <linkerLibItems>
             <linkerLibLibItem>wx_baseu-3.1</linkerLibLibItem>
-            <linkerLibLibItem>wx_gtk2u_core-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wx_gtk3u_core-3.1</linkerLibLibItem>
             <linkerLibLibItem>wx_baseu_xml-3.1</linkerLibLibItem>
-            <linkerLibLibItem>wxcode_gtk2u_wxjson-3.1</linkerLibLibItem>
+            <linkerLibLibItem>wxcode_gtk3u_wxjson-3.1</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
