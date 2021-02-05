@@ -29,7 +29,6 @@ BaseGridPicker::BaseGridPicker(wxWindow *parent,
     m_intentLabel = _T("Intent");
     m_nbInsertRows = 3;
     m_colTypeChoices = types;
-    m_PrefEditor = NULL;
     wxButton * btn = static_cast<wxButton*> (GetPickerCtrl());
     btn->Bind(wxEVT_COMMAND_BUTTON_CLICKED, &BaseGridPicker::ShowPopup, this);
 }
@@ -175,22 +174,13 @@ void BaseGridPicker::PrepareGrid()
     m_stringTable->SetColLabelValue(1, _T("Type"));
     m_stringTable->SetColLabelValue(2, _T("Preferred"));
     m_stringTable->SetColLabelValue(3, _T("Notes"));
-    m_grid->Bind(wxEVT_GRID_EDITOR_CREATED, &BaseGridPicker::OnEditorCreated, this);
-    m_grid->Bind(wxEVT_GRID_EDITOR_HIDDEN, &BaseGridPicker::OnEditorHidden, this);
+    m_grid->Bind(wxEVT_GRID_CELL_CHANGED, &BaseGridPicker::OnPrefCellChanged, this);
 }
 
-void BaseGridPicker::OnEditorCreated(wxGridEditorCreatedEvent& evt)
+void BaseGridPicker::OnPrefCellChanged(wxGridEvent& evt)
 {
-    if (evt.GetCol() == 2)
-    {
-        m_PrefEditor = static_cast<wxCheckBox*> (evt.GetControl());
-    }
-    evt.Skip();
-}
-
-void BaseGridPicker::OnEditorHidden(wxGridEvent& evt)
-{
-    if (evt.GetCol() == 2 && m_PrefEditor && m_PrefEditor->IsChecked())
+    if (evt.GetCol() == 2 
+            && m_stringTable->GetValue(evt.GetRow(), evt.GetCol()) == _T("1"))
     {
         for (uint row = 0; row < m_stringTable->GetRowsCount(); row++)
         {

@@ -138,7 +138,6 @@ private:
     wxArrayString m_colTypeChoices;
     wxString m_intentLabel;
     uint m_nbInsertRows;
-    wxCheckBox * m_PrefEditor;
     /**
      * Configures the Preferred column for editing and rendering using a
      * checkbox.
@@ -156,19 +155,11 @@ private:
      */
     void PrepareGrid();
     /**
-     * References the wxCheckBox editor.
-     * <br/>
-     * Does nothing for the other columns.
-     * 
-     * @param evt
-     */
-    void OnEditorCreated(wxGridEditorCreatedEvent& evt);
-    /**
      * Concerns the Preferred column only. When the editor is checked, ensures
      * the other rows are unchecked.
      * @param evt
      */
-    void OnEditorHidden(wxGridEvent& evt);
+    void OnPrefCellChanged(wxGridEvent& evt);
     /**
      * Just calls BasePicker::DoShowPopup().
      * @param evt
