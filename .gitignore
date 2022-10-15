@@ -1,5 +1,5 @@
-L7/dist/
-L7/build/
-L7/docs/
-L7Test/dist/
-L7Test/build/
+build/
+.kdev4/
+L7.kdev4
+docs/
+

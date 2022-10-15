@@ -1,0 +1,23 @@
+ 
+cmake_minimum_required(VERSION 3.0)
+
+project(wxJson) 
+
+find_package(wxWidgets CONFIG REQUIRED)
+    
+set (TARGET_NAME wxJson)
+
+include_directories(include)
+add_library(${TARGET_NAME} SHARED
+            src/jsonval.cpp
+            src/jsonreader.cpp src/jsonwriter.cpp)
+    
+install(TARGETS ${TARGET_NAME} DESTINATION lib/${TARGET_NAME}) 
+
+install(FILES 
+    include/wx/json_defs.h include/wx/jsonval.h
+    include/wx/jsonreader.h include/wx/jsonwriter.h
+    DESTINATION include/${TARGET_NAME}/wx)
+
+target_link_libraries(${TARGET_NAME} ${wxWidgets_LIBRARIES})
+

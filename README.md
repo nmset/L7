@@ -1,46 +1,27 @@
 # L7
- A library aiming to help writing database applications using wxWidgets, PostgreSQL and SQLite.
 
-It's a generic spin-off of a production library I'm using.
+A custom library aiming to help writing simple database applications using [wxWidgets](https://wxwidgets.org/), PostgreSQL and SQLite. It requires [wxJSON](https://wxcode.sourceforge.net/docs/wxjson/) that should be first downloaded and built with the provided template file.
 
-Released under the LGPL 2.1 of the Free software Foundation.
 
-Author and copyright : SET, M.D. , nmset@yandex.com
-
-Developped with NetBeans.
-
-------Build
-
-wxWidgets is expected in /usr/local/wxWidgets, as referenced in the NetBeans project.libpq and libsqlite3 are expected in the system's library directory.
+### Build
 
 $ cd L7
 
-$ make clobber
+$ mkdir build; cd $_
 
-$ make CONF=Debug
+$ cmake -DwxJson_DIR:PATH=/usr/local -DWITH_LIBPQ:BOOL=ON -DWITH_LIBSQ:BOOL=ON ../
 
-$ cd ../L7Test
+$ make L7 -j4 && make L7Test
 
-$ make CONF=Debug
 
-Output will be in dist/Debug/GNU-Linux/ and dist/Release/GNU-Linux/ .
-
-------How to consider the code.
-
-I do not have an academic background in computer science, programming is my 
-hobby.
-
-------How to consider L7.
-
-Use at your own risks. It's free software.
-Use it or trash it. No warranties.
-L7 does not claim to be fit for any purpose.
-L7 does not expect to be used.
-
-------Documentation
+##### Documentation
 
 $ cd L7
 
-$ doxygen L7.dox
+$ doxygen Resources/L7.dox
 
 Output will be in docs/ .
+
+## Disclaimer
+
+Use at your own risks. L7 does not claim to be fit for any purpose. L7 does not expect to be used.
