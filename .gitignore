@@ -2,4 +2,6 @@ build/
 .kdev4/
 L7.kdev4
 docs/
+Resources/Lokalize/main.lqa
+Resources/Lokalize/fr/L7.mo
 

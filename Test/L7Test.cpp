@@ -31,6 +31,12 @@ bool L7Test::OnInit()
 {
     L7Frame * main = new L7Frame(NULL, wxID_ANY, _T("L7 Test"));
     SetAppName(_T("L7Test"));
+    
+    // Fails here : L7.mo in dir containing L7Test, or in /usr/local/share/locale/fr/LC_MESSAGES/.
+    m_locale.Init(wxLANGUAGE_DEFAULT);
+    wxTranslations::Get()->AddStdCatalog();
+    m_locale.AddCatalog(_T("L7"));
+    
     SetTopWindow(main);
     main->Show();
     return true;

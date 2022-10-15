@@ -37,7 +37,7 @@ public:
 
 
 private:
-
+    wxLocale m_locale;
 };
 
 class L7Frame : public wxFrame
