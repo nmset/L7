@@ -22,7 +22,7 @@ namespace SQ
 {
 #define RSSQMC wxString(_T("RSSQM"))
 #define RSSQ000C wxString(_T("RS000"))
-#define RSSQ000M wxString(_("Result set is NULL."))
+#define RSSQ000M wxString(_T("Result set is NULL."))
 #define RSSQ001C wxString(_T("RS001"))
 #define RSSQ001M wxString(_("Insert started\nPlease SAVE or CANCEL first"))
 #define RSSQ002C wxString(_T("RS002"))
@@ -30,7 +30,7 @@ namespace SQ
 #define RSSQ003C wxString(_T("RS003"))
 #define RSSQ003M wxString(_("Data altered\nPlease SAVE or CANCEL first"))
 #define RSSQ004C wxString(_T("RS004"))
-#define RSSQ004M wxString(_("Invalid column name :\n"))
+#define RSSQ004M wxString(_T("Invalid column name :\n"))
 
 /**
  * Scrollable resultset for the SQLite backend.

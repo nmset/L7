@@ -40,7 +40,7 @@ void LBoundTextCtrl::SetData(const wxAny& newData)
 
 bool LBoundTextCtrl::IsDirty()
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     wxAny BEData = m_rs->GetData(m_columnName);
     return (GetValue() != BEData.As<wxString>());
 }

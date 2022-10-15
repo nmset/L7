@@ -37,7 +37,7 @@ wxString JsonHelper::GetIntent(const wxString& jsonData)
     }
     if (!root.IsArray())
     {
-        wxASSERT_MSG(root.IsArray(), _("JSON data is not an array"));
+        wxASSERT_MSG(root.IsArray(), _T("JSON data is not an array"));
         return wxEmptyString;
     }
     for (uint row = 0; row < root.Size(); row++)

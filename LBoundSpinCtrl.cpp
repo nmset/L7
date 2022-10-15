@@ -50,7 +50,7 @@ void LBoundSpinCtrl::SetData(const wxAny& newData)
 
 bool LBoundSpinCtrl::IsDirty()
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     wxAny BEData = m_rs->GetData(m_columnName);
     if (BEData.IsNull() || BEData.As<wxString>().IsEmpty())
         BEData = m_initialValue;

@@ -53,7 +53,7 @@ const wxString LGridJsonCellRenderer::ProcessJsonValue(const wxString& cellValue
     }
     if (!root.IsArray())
     {
-        wxASSERT_MSG(root.IsArray(), _("JSON data is not an array"));
+        wxASSERT_MSG(root.IsArray(), _T("JSON data is not an array"));
         return cellValue;
     }
     for (uint row = 0; row < root.Size(); row++)

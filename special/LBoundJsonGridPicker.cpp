@@ -59,7 +59,7 @@ void LBoundJsonGridPicker::SetNull()
 
 bool LBoundJsonGridPicker::IsDirty()
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     wxAny BEData = m_rs->GetData(m_columnName);
     const wxString ctrlValue = GetValue();
     /*
@@ -85,7 +85,7 @@ bool LBoundJsonGridPicker::IsDirty()
     }
     if (!beRoot.IsArray())
     {
-        wxASSERT_MSG(beRoot.IsArray(), _("Back end JSON data is not an array"));
+        wxASSERT_MSG(beRoot.IsArray(), _T("Back end JSON data is not an array"));
         return true;
     }
 
@@ -105,7 +105,7 @@ bool LBoundJsonGridPicker::IsDirty()
     }
     if (!ctrlRoot.IsArray())
     {
-        wxASSERT_MSG(ctrlRoot.IsArray(), _("Control JSON data is not an array"));
+        wxASSERT_MSG(ctrlRoot.IsArray(), _T("Control JSON data is not an array"));
         return false;
     }
 

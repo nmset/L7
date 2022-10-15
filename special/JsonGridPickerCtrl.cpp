@@ -82,7 +82,7 @@ void JsonGridPickerCtrl::SetValue(const wxString& value)
     }
     if (!root.IsArray())
     {
-        wxASSERT_MSG(root.IsArray(), _("JSON data is not an array"));
+        wxASSERT_MSG(root.IsArray(), _T("JSON data is not an array"));
         return;
     }
     for (uint row = 0; row < root.Size(); row++)
@@ -117,7 +117,7 @@ wxString JsonGridPickerCtrl::GetValue()
 
 void JsonGridPickerCtrl::FillGrid()
 {
-    wxASSERT_MSG(m_grid != NULL, _("m_grid IS NULL"));
+    wxASSERT_MSG(m_grid != NULL, _T("m_grid IS NULL"));
     wxJSONReader reader(wxJSONREADER_STRICT);
     wxJSONValue root;
     uint nbErr = reader.Parse(m_value, &root);
@@ -132,7 +132,7 @@ void JsonGridPickerCtrl::FillGrid()
     }
     if (!root.IsArray())
     {
-        wxASSERT_MSG(root.IsArray(), _("JSON data is not an array"));
+        wxASSERT_MSG(root.IsArray(), _T("JSON data is not an array"));
         return;
     }
 
@@ -148,8 +148,8 @@ void JsonGridPickerCtrl::FillGrid()
 
 void JsonGridPickerCtrl::DumpGrid()
 {
-    wxASSERT_MSG(m_grid != NULL, _("m_grid IS NULL"));
-    wxASSERT_MSG(m_stringTable != NULL, _("m_stringTable IS NULL"));
+    wxASSERT_MSG(m_grid != NULL, _T("m_grid IS NULL"));
+    wxASSERT_MSG(m_stringTable != NULL, _T("m_stringTable IS NULL"));
     if (!m_editable || !m_stringTable || !m_grid)
         return;
     wxJSONWriter writer;

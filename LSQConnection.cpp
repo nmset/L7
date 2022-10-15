@@ -78,7 +78,7 @@ void LSQConnection::Close()
 
 void * LSQConnection::ExecuteSQL(const wxString& newSql)
 {
-    wxCHECK_MSG(IsValid() == true, NULL, _("Invalid connection"));
+    wxCHECK_MSG(IsValid() == true, NULL, _T("Invalid connection"));
     SQresult * res = new SQresult();
     const char* cSQL = newSql.c_str();
     m_errMsg = NULL;
@@ -95,7 +95,7 @@ void * LSQConnection::ExecuteSQL(const wxString& newSql)
 
 bool LSQConnection::ExecuteUpdateSQL(const wxString& newSql)
 {
-    wxCHECK_MSG(IsValid() == true, false, _("Invalid connection"));
+    wxCHECK_MSG(IsValid() == true, false, _T("Invalid connection"));
     const char* cSQL = newSql.c_str();
     m_errMsg = NULL;
     int rc = sqlite3_exec(m_conn, cSQL, NULL, NULL, &m_errMsg);

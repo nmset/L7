@@ -23,7 +23,7 @@ namespace PQ
 {
 #define RSPQMC wxString(_T("RSPQM"))
 #define RS000C wxString(_T("RS000"))
-#define RS000M wxString(_("Result set is NULL."))
+#define RS000M wxString(_T("Result set is NULL."))
 #define RS001C wxString(_T("RS001"))
 #define RS001M wxString(_("Insert started\nPlease SAVE or CANCEL first"))
 #define RS002C wxString(_T("RS002"))
@@ -31,7 +31,7 @@ namespace PQ
 #define RS003C wxString(_T("RS003"))
 #define RS003M wxString(_("Data altered\nPlease SAVE or CANCEL first"))
 #define RS004C wxString(_T("RS004"))
-#define RS004M wxString(_("Invalid column name :\n"))
+#define RS004M wxString(_T("Invalid column name :\n"))
 
 /**
  * Scrollable resultset for the PostgreSQL backend.

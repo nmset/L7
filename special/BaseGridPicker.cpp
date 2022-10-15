@@ -70,13 +70,13 @@ void BaseGridPicker::CreateGrid()
 void BaseGridPicker::SetIntentLabel(const wxString& intent)
 {
     m_intentLabel = intent;
-    wxASSERT_MSG(m_stringTable != NULL, _("m_stringTable IS NULL"));
+    wxASSERT_MSG(m_stringTable != NULL, _T("m_stringTable IS NULL"));
     m_stringTable->SetColLabelValue(0, m_intentLabel);
 }
 
 wxString BaseGridPicker::GetIntent() const
 {
-    wxASSERT_MSG(m_stringTable != NULL, _("m_stringTable IS NULL"));
+    wxASSERT_MSG(m_stringTable != NULL, _T("m_stringTable IS NULL"));
     for (uint row = 0; row < m_stringTable->GetRowsCount(); row++)
     {
         if (m_stringTable->GetValue(row, 2) != _T("0")
@@ -138,7 +138,7 @@ void BaseGridPicker::OnPopupHidden(wxShowEvent& evt)
 
 void BaseGridPicker::PreparePreferredCol()
 {
-    wxASSERT_MSG(m_stringTable != NULL, _("m_stringTable IS NULL"));
+    wxASSERT_MSG(m_stringTable != NULL, _T("m_stringTable IS NULL"));
     wxGridCellAttr * colAtt = m_stringTable->GetAttr(m_grid->GetGridCursorRow(), 2, wxGridCellAttr::Col);
     if (colAtt == NULL) colAtt = new wxGridCellAttr();
     wxGridCellBoolEditor * ed = new wxGridCellBoolEditor();
@@ -151,7 +151,7 @@ void BaseGridPicker::PreparePreferredCol()
 
 void BaseGridPicker::PrepareTypeCol()
 {
-    wxASSERT_MSG(m_stringTable != NULL, _("m_stringTable IS NULL"));
+    wxASSERT_MSG(m_stringTable != NULL, _T("m_stringTable IS NULL"));
     wxGridCellAttr * colAtt = m_stringTable->GetAttr(m_grid->GetGridCursorRow(), 1, wxGridCellAttr::Col);
     if (colAtt == NULL) colAtt = new wxGridCellAttr();
     wxGridCellChoiceEditor* ed = new wxGridCellChoiceEditor(m_colTypeChoices);
@@ -161,8 +161,8 @@ void BaseGridPicker::PrepareTypeCol()
 
 void BaseGridPicker::PrepareGrid()
 {
-    wxASSERT_MSG(m_grid != NULL, _("m_grid IS NULL"));
-    wxASSERT_MSG(m_stringTable != NULL, _("m_stringTable IS NULL"));
+    wxASSERT_MSG(m_grid != NULL, _T("m_grid IS NULL"));
+    wxASSERT_MSG(m_stringTable != NULL, _T("m_stringTable IS NULL"));
     m_grid->AppendCols(4);
     m_grid->AppendRows(m_nbInsertRows);
     PreparePreferredCol();

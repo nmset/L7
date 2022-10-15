@@ -66,7 +66,7 @@ bool LBoundXmlGridPicker::IsDirty()
      * canonical XML, AFAIK.
      * Linking to other libraries for this would be an overkill.
      */
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     wxAny BEData = m_rs->GetData(m_columnName);
     return (GetValue() != BEData.As<wxString>());
 }

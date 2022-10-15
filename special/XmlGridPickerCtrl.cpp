@@ -97,7 +97,7 @@ wxString XmlGridPickerCtrl::GetValue()
 
 void XmlGridPickerCtrl::FillGrid()
 {
-    wxASSERT_MSG(m_grid != NULL, _("m_grid IS NULL"));
+    wxASSERT_MSG(m_grid != NULL, _T("m_grid IS NULL"));
     wxXmlDocument doc;
     wxXmlNode * root = XmlHelper::ValidateXmlValue(doc, m_value);
     if (root == NULL)
@@ -121,8 +121,8 @@ void XmlGridPickerCtrl::FillGrid()
 
 void XmlGridPickerCtrl::DumpGrid()
 {
-    wxASSERT_MSG(m_grid != NULL, _("m_grid IS NULL"));
-    wxASSERT_MSG(m_stringTable != NULL, _("m_stringTable IS NULL"));
+    wxASSERT_MSG(m_grid != NULL, _T("m_grid IS NULL"));
+    wxASSERT_MSG(m_stringTable != NULL, _T("m_stringTable IS NULL"));
     if (!m_editable || !m_stringTable || !m_grid)
         return;
     wxXmlDocument doc;

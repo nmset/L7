@@ -35,7 +35,7 @@ const char* LPQConnection::GetLastLibMessage() const
 
 bool LPQConnection::Connect()
 {
-    wxCHECK_MSG(!m_connInfo.IsEmpty(), false, _("Connection string is undefined"));
+    wxCHECK_MSG(!m_connInfo.IsEmpty(), false, _T("Connection string is undefined"));
     if (m_conn != NULL)
     {
         if (PQstatus(m_conn) == CONNECTION_OK) return true;
@@ -85,7 +85,7 @@ void LPQConnection::Close()
 void* LPQConnection::ExecuteSQL(const wxString& newSql)
 {
     InformBeforeExecute();
-    wxCHECK_MSG(IsValid() == true, NULL, _("Invalid connection"));
+    wxCHECK_MSG(IsValid() == true, NULL, _T("Invalid connection"));
     const char* cSQL = newSql.utf8_str();
     PGresult * res = PQexec(m_conn, cSQL);
     if (PQresultStatus(res) != PGRES_TUPLES_OK)
@@ -102,7 +102,7 @@ void* LPQConnection::ExecuteSQL(const wxString& newSql)
 bool LPQConnection::ExecuteUpdateSQL(const wxString& newSql)
 {
     InformBeforeExecute();
-    wxCHECK_MSG(IsValid() == true, false, _("Invalid connection"));
+    wxCHECK_MSG(IsValid() == true, false, _T("Invalid connection"));
     const char* cSQL = newSql.utf8_str();
     m_retKeys = PQexec(m_conn, cSQL);
     if ((PQresultStatus(m_retKeys) != PGRES_TUPLES_OK) && (PQresultStatus(m_retKeys) != PGRES_COMMAND_OK))

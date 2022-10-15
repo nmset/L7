@@ -79,7 +79,7 @@ void LBoundGrid::ClearGrid()
 
 void LBoundGrid::FillGrid()
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     wxASSERT_MSG(m_rs->GetConnection() != NULL, _T("GetConnection() = NULL."));
     wxGridUpdateLocker locker(this);
     // Starting again, the grid's resultset must free itself from any registered controls.
@@ -138,9 +138,9 @@ void LBoundGrid::CreateCheckBoxColumn(const wxString& newColName,
                                       bool isDualstate,
                                       wxString newNullLabel)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     const int col = m_rs->GetColumnIndex(newColName);
-    wxASSERT_MSG(col > -1, _("Invalid column name : ") + newColName);
+    wxASSERT_MSG(col > -1, _T("Invalid column name : ") + newColName);
     wxGridCellAttr * colAtt = m_stringTable->GetAttr(GetGridCursorRow(), col, wxGridCellAttr::Col);
     if (colAtt == NULL) colAtt = new wxGridCellAttr();
     LGridCheckEditor * ed = new LGridCheckEditor(newColName, isDualstate, newNullLabel);
@@ -158,9 +158,9 @@ void LBoundGrid::CreateComboBoxColumn(const wxString& newColName,
                                       unsigned int width,
                                       bool readOnly)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     const int col = m_rs->GetColumnIndex(newColName);
-    wxASSERT_MSG(col > -1, _("Invalid column name : ") + newColName);
+    wxASSERT_MSG(col > -1, _T("Invalid column name : ") + newColName);
     wxGridCellAttr * colAtt = m_stringTable->GetAttr(GetGridCursorRow(), col, wxGridCellAttr::Col);
     if (colAtt == NULL) colAtt = new wxGridCellAttr();
     LGridComboEditor * ed = new LGridComboEditor(newColName);
@@ -178,9 +178,9 @@ void LBoundGrid::CreateDateColumn(const wxString& newColName,
                                   unsigned int width,
                                   bool readOnly)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     const int col = m_rs->GetColumnIndex(newColName);
-    wxASSERT_MSG(col > -1, _("Invalid column name : ") + newColName);
+    wxASSERT_MSG(col > -1, _T("Invalid column name : ") + newColName);
     wxGridCellAttr * colAtt = m_stringTable->GetAttr(GetGridCursorRow(), col, wxGridCellAttr::Col);
     if (colAtt == NULL) colAtt = new wxGridCellAttr();
     LGridDateEditor * ed = new LGridDateEditor(newColName);
@@ -200,9 +200,9 @@ void LBoundGrid::CreateTextColumn(const wxString& newColName,
                                   bool newMultiline,
                                   bool readOnly)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     const int col = m_rs->GetColumnIndex(newColName);
-    wxASSERT_MSG(col > -1, _("Invalid column name : ") + newColName);
+    wxASSERT_MSG(col > -1, _T("Invalid column name : ") + newColName);
     wxGridCellAttr * colAtt = m_stringTable->GetAttr(GetGridCursorRow(), col, wxGridCellAttr::Col);
     if (colAtt == NULL) colAtt = new wxGridCellAttr();
     LGridTextEditor * ed = new LGridTextEditor(newColName, newMultiline);
@@ -223,9 +223,9 @@ void LBoundGrid::CreateSpinColumn(const wxString& newColName,
                                   int newInitial,
                                   bool readOnly)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     const int col = m_rs->GetColumnIndex(newColName);
-    wxASSERT_MSG(col > -1, _("Invalid column name : ") + newColName);
+    wxASSERT_MSG(col > -1, _T("Invalid column name : ") + newColName);
     wxGridCellAttr * colAtt = m_stringTable->GetAttr(GetGridCursorRow(), col, wxGridCellAttr::Col);
     if (colAtt == NULL) colAtt = new wxGridCellAttr();
     LGridSpinEditor * ed = new LGridSpinEditor(newColName, newMin, newMax, newInitial);
@@ -247,9 +247,9 @@ void LBoundGrid::CreateJsonGridColumn(const wxString& newColName,
                                       wxSize popupSize,
                                       bool readOnly)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     const int col = m_rs->GetColumnIndex(newColName);
-    wxASSERT_MSG(col > -1, _("Invalid column name : ") + newColName);
+    wxASSERT_MSG(col > -1, _T("Invalid column name : ") + newColName);
     wxGridCellAttr * colAtt = m_stringTable->GetAttr(GetGridCursorRow(), col, wxGridCellAttr::Col);
     if (colAtt == NULL) colAtt = new wxGridCellAttr();
     LGridJsonCellEditor * ed = new LGridJsonCellEditor(newColName, intentLabel, types, popupSize);
@@ -271,9 +271,9 @@ void LBoundGrid::CreateXmlGridColumn(const wxString& newColName,
                                      wxSize popupSize,
                                      bool readOnly)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     const int col = m_rs->GetColumnIndex(newColName);
-    wxASSERT_MSG(col > -1, _("Invalid column name : ") + newColName);
+    wxASSERT_MSG(col > -1, _T("Invalid column name : ") + newColName);
     wxGridCellAttr * colAtt = m_stringTable->GetAttr(GetGridCursorRow(), col, wxGridCellAttr::Col);
     if (colAtt == NULL) colAtt = new wxGridCellAttr();
     LGridXmlCellEditor * ed = new LGridXmlCellEditor(newColName, intentLabel, types, popupSize);
@@ -289,7 +289,7 @@ void LBoundGrid::CreateXmlGridColumn(const wxString& newColName,
 
 const wxString LBoundGrid::GetColName(const unsigned int col)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     InitEditor(GetGridCursorRow(), col, false);
     LGridColEditor * gce = GetColEditor(GetGridCursorRow(), col);
     if (gce == NULL) return wxEmptyString;
@@ -298,7 +298,7 @@ const wxString LBoundGrid::GetColName(const unsigned int col)
 
 int LBoundGrid::GetColIndex(const wxString& colName)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     for (unsigned int col = 0; col < GetNumberCols(); col++)
     {
         LGridColEditor * gce = GetColEditor(GetGridCursorRow(), col);
@@ -312,8 +312,8 @@ LBoundControl* LBoundGrid::GetBoundControl(const unsigned int row,
                                            const unsigned int col,
                                            bool keepRegistered)
 {
-    wxASSERT_MSG(row >= 0 && row < GetNumberRows(), _("Invalid row parameter"));
-    wxASSERT_MSG(col >= 0 && col < GetNumberCols(), _("Invalid col parameter"));
+    wxASSERT_MSG(row >= 0 && row < GetNumberRows(), _T("Invalid row parameter"));
+    wxASSERT_MSG(col >= 0 && col < GetNumberCols(), _T("Invalid col parameter"));
     wxObjectDataPtr<wxGridCellAttr> cellAttr;
     cellAttr = m_stringTable->GetAttr(row, col, wxGridCellAttr::Col);
     if (cellAttr.get() == NULL) return NULL;
@@ -326,7 +326,7 @@ LBoundControl* LBoundGrid::GetBoundControl(const unsigned int row,
     if (!gce) return NULL; // APP CAN ADD AN UNBOUND COLUMN
     if (!keepRegistered)
     {
-        wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+        wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
         m_rs->UnRegisterControl(gce->GetBoundControl());
     }
     return gce->GetBoundControl();
@@ -336,8 +336,8 @@ LBoundControl* LBoundGrid::GetBoundControl(const unsigned int row,
                                            const wxString& colName,
                                            bool keepRegistered)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
-    wxASSERT_MSG(row >= 0 && row < GetNumberRows(), _("Invalid row parameter"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
+    wxASSERT_MSG(row >= 0 && row < GetNumberRows(), _T("Invalid row parameter"));
     for (int col = 0; col < GetNumberCols(); col++)
     {
         LGridColEditor * gce = GetColEditor(row, col);
@@ -353,8 +353,8 @@ LBoundControl* LBoundGrid::GetBoundControl(const unsigned int row,
 
 LGridColEditor* LBoundGrid::GetColEditor(const unsigned int row, const unsigned int col) const
 {
-    wxASSERT_MSG(row >= 0 && row < GetNumberRows(), _("Invalid row parameter"));
-    wxASSERT_MSG(col >= 0 && col < GetNumberCols(), _("Invalid col parameter"));
+    wxASSERT_MSG(row >= 0 && row < GetNumberRows(), _T("Invalid row parameter"));
+    wxASSERT_MSG(col >= 0 && col < GetNumberCols(), _T("Invalid col parameter"));
     wxObjectDataPtr<wxGridCellAttr> cellAttr;
     cellAttr = m_stringTable->GetAttr(row, col, wxGridCellAttr::Col);
     if (cellAttr.get() == NULL) return NULL;
@@ -366,8 +366,8 @@ LGridColEditor* LBoundGrid::GetColEditor(const unsigned int row, const unsigned 
 
 wxControl* LBoundGrid::GetFormEditor(const unsigned int col) const
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
-    wxASSERT_MSG(col >= 0 && col < GetNumberCols(), _("Invalid col parameter"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
+    wxASSERT_MSG(col >= 0 && col < GetNumberCols(), _T("Invalid col parameter"));
     int row = m_rs->GetRow();
     if (m_rs->IsInserting()) row = m_rs->GetRowCount();
     LGridColEditor* gce = GetColEditor(row, col);
@@ -377,7 +377,7 @@ wxControl* LBoundGrid::GetFormEditor(const unsigned int col) const
 
 wxControl* LBoundGrid::GetFormEditor(const wxString& colName)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     int row = m_rs->GetRow();
     if (m_rs->IsInserting()) row = m_rs->GetRowCount();
     for (int col = 0; col < GetNumberCols(); col++)
@@ -394,8 +394,8 @@ bool LBoundGrid::InitEditor(const unsigned int row,
                             const unsigned int col,
                             bool keepRegistered)
 {
-    wxASSERT_MSG(row >= 0 && row < GetNumberRows(), _("Invalid row parameter"));
-    wxASSERT_MSG(col >= 0 && col < GetNumberCols(), _("Invalid col parameter"));
+    wxASSERT_MSG(row >= 0 && row < GetNumberRows(), _T("Invalid row parameter"));
+    wxASSERT_MSG(col >= 0 && col < GetNumberCols(), _T("Invalid col parameter"));
     wxObjectDataPtr<wxGridCellAttr> cellAttr;
     cellAttr = m_stringTable->GetAttr(row, col, wxGridCellAttr::Col);
     if (cellAttr.get() == NULL) return false;
@@ -407,7 +407,7 @@ bool LBoundGrid::InitEditor(const unsigned int row,
     ed->Show(false);
     if (!keepRegistered)
     {
-        wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+        wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
         LGridColEditor* gce = dynamic_cast<LGridColEditor*> (ed.get());
         if (!gce) return false;
         m_rs->UnRegisterControl(gce->GetBoundControl());
@@ -417,7 +417,7 @@ bool LBoundGrid::InitEditor(const unsigned int row,
 
 void LBoundGrid::InitAllEditors(const unsigned int row, bool keepRegistered)
 {
-    wxASSERT_MSG(row >= 0 && row < GetNumberRows(), _("Invalid row parameter"));
+    wxASSERT_MSG(row >= 0 && row < GetNumberRows(), _T("Invalid row parameter"));
     if (m_stringTable == NULL) return;
     if (GetNumberCols() > 0)
     {
@@ -435,14 +435,14 @@ void LBoundGrid::AddMenuSeparator()
 
 void LBoundGrid::AddMenuItem(wxMenuItem* newItem)
 {
-    wxASSERT_MSG(newItem != NULL, _("Menu item is NULL"));
+    wxASSERT_MSG(newItem != NULL, _T("Menu item is NULL"));
     if (m_menu->FindItem(newItem->GetItemLabelText()) != wxNOT_FOUND) return;
     m_menu->Append(newItem);
 }
 
 void LBoundGrid::AddSubMenu(wxMenu* newSubMenu, const wxString& label)
 {
-    wxASSERT_MSG(newSubMenu != NULL, _("Submenu is NULL"));
+    wxASSERT_MSG(newSubMenu != NULL, _T("Submenu is NULL"));
     if (m_menu->FindItem(newSubMenu->GetTitle()) != wxNOT_FOUND) return;
     m_menu->AppendSubMenu(newSubMenu, label);
 }
@@ -491,7 +491,7 @@ void LBoundGrid::ForceSingleLineRange(wxGridRangeSelectEvent& evt)
 
 void LBoundGrid::CellSelected(wxGridEvent& evt)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     // The insert row is somehow un-natural, it exists in the grid but not in the resultset, we manage it separately.
     if (!m_rs->IsInserting())
     {
@@ -645,7 +645,7 @@ void LBoundGrid::MenuAction(wxCommandEvent& evt)
 
 bool LBoundGrid::InitPKEditor(const int row)
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     for (int c = 0; c < GetNumberCols(); c++)
     {
         wxObjectDataPtr<wxGridCellAttr> cellAttr;
@@ -668,7 +668,7 @@ bool LBoundGrid::InitPKEditor(const int row)
 
 void LBoundGrid::ShowFormView()
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     wxDialog * dlg = new wxDialog(this, wxID_ANY, _("Form view"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxMAXIMIZE_BOX | wxRESIZE_BORDER);
     unsigned int row = m_rs->GetRow();
     if (m_rs->IsInserting()) row = m_rs->GetRowCount();
@@ -790,7 +790,7 @@ void LBoundGrid::ShowFormView()
 
 void LBoundGrid::RestoreEditorControls()
 {
-    wxASSERT_MSG(m_rs != NULL, _("RS = NULL"));
+    wxASSERT_MSG(m_rs != NULL, _T("RS = NULL"));
     while (m_rs->GetRegisteredControls().GetCount())
     {
         LBoundControl * ctrl = static_cast<LBoundControl*> (m_rs->GetRegisteredControls().Item(0));
