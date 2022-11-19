@@ -1,8 +1,8 @@
 /* 
  * File:   LGridJsonCellEditor.cpp
- * Author: SET - nmset@yandex.com
+ * Author: Saleem Edah-Tally - nmset@yandex.com
  * License : LGPL version 2.1
- * Copyright SET, M. D. - © 2014
+ * Copyright Saleem Edah-Tally, M. D. - © 2014
  * Author: user
  * 
  * Created on December 9, 2019, 10:36 AM

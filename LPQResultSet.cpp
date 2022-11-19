@@ -1,8 +1,8 @@
 /* 
  * File:   LPQResultSet.cpp
- * Author: SET - nmset@yandex.com
+ * Author: Saleem Edah-Tally - nmset@yandex.com
  * License : LGPL version 2.1
- * Copyright SET, M. D. - © 2014
+ * Copyright Saleem Edah-Tally, M. D. - © 2014
  * 
  * Created on 29 mai 2014, 16:19
  */
